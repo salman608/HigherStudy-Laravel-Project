@@ -8,6 +8,7 @@
   <!-- <link rel="icon" href="img/favicon.png" type="image/png"> -->
   <title>HigherStudy Education</title>
   <!-- Bootstrap CSS -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Titillium+Web|Ubuntu&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/vendors/linericon/style.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/font-awesome.min.css')}}">
@@ -66,10 +67,11 @@
                   <li class="nav-item"><a class="nav-link" href="topuniversity.html">Top University</a></li>
                 </ul>
               </li>
-
-              <li class="nav-item"><a class="nav-link" href="{{URL::to('/agency')}}">Agency</a></li>
-
               <li class="nav-item"><a class="nav-link" href="{{URL::to('/contact')}}">Contact</a></li>
+
+              <li class="nav-item"><a class="nav-link" href="{{URL::to('/user')}}">Agency Login</a></li>
+
+
             </ul>
           </div>
         </div>
@@ -78,7 +80,7 @@
   </header>
   <!--================Header Menu Area =================-->
 
-  
+
 
 
 @yield('content')

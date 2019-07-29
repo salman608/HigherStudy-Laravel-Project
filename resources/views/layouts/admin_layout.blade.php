@@ -121,7 +121,13 @@
                         <li><a href="">My Profile</a></li>
                         <li><a href="edit-profile.html">Edit Profile</a></li>
                         <li><a href="settings.html">Settings</a></li>
-                        <li><a href="">Logout</a></li>
+                        <li><a href="{{route('admin.logout')}}"
+                          onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();" 
+                          >Logout</a></li>
+                          <form id="logout-form" action="{{route('admin.logout')}}" method="post" style="display: none;">
+                            @csrf
+                          </form>
                     </ul>
                 </li>
 
@@ -187,17 +193,26 @@
                         <li class="submenu">
                             <a href="#"><i class="fa fa-book" aria-hidden="true"></i> <span> Department</span> <span class="menu-arrow"></span></a>
                             <ul class="list-unstyled" style="display: none;">
-                                <li><a href="{{route('department.index')}}">All Department</a></li>
-                                <li><a href="{{route('department.create')}}">Add Department</a></li>
+                            <li><a href="{{route('department.create')}}">Add Department</a></li>
+                            <li><a href="{{route('department.index')}}">All Department</a></li>
 
-                            </ul>
+                        </ul>
                         </li>
 
                         <li class="submenu">
                             <a href="#"><i class="fa fa-book" aria-hidden="true"></i> <span> Course Details</span> <span class="menu-arrow"></span></a>
                             <ul class="list-unstyled" style="display: none;">
-                                <li><a href="">All course details</a></li>
-                                <li><a href="">Add course details</a></li>
+                            <li><a href="{{route('course.create')}}">Add course details</a></li>
+                            <li><a href="{{route('course.index')}}">All course details</a></li>
+
+                            </ul>
+                        </li>
+
+                        <li class="submenu">
+                            <a href="#"><i class="fa fa-book" aria-hidden="true"></i> <span> Agency</span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled" style="display: none;">
+                                <li><a href="{{route('agencycategory')}}">All Agency </a></li>
+
 
                             </ul>
                         </li>

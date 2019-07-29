@@ -12,7 +12,7 @@ class University extends Model
 
 
 public function  departments(){
-  return $this->belongsToMany('App\Department','university_department');
+  return $this->belongsToMany('App\Department','university_department')->withPivot('department_id', 'university_id');;
 }
 
 

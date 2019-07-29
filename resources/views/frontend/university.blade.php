@@ -3,23 +3,23 @@
 @section('content')
 
 <!--================Home Banner Area =================-->
-        <section class="banner_area">
-            <div class="banner_inner d-flex align-items-center">
-            	<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
-				<div class="container">
-					<div class="banner_content text-center">
-						<h2>Contact Us</h2>
-						<div class="page_link">
-							<a href="index.html">Home</a>
-              <a href="contact.html">Country</a>
-							<a href="contact.html">University</a>
-						</div>
-					</div>
-				</div>
-            </div>
-        </section>
 
-  <!--================Contact Area =================-->
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+      <div class="container">
+        <div class="banner_content text-center">
+          <h2>All University</h2>
+          <div class="page_link">
+            <a href="index.html">Home</a>
+            <a href="#">Country</a>
+            <a href="about-us.html">University</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!--================End Home Banner Area =================-->
 
 
   <!--================Blog Agency Area =================-->

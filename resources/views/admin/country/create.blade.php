@@ -17,7 +17,7 @@
                     <div class="form-group">
                         <label class="control-label col-lg-2">Country Name</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="name" placeholder="Category Name---">
+                            <input type="text" class="form-control" name="name" placeholder="Country Name---">
                         </div>
                     </div>
                     <div class="form-group">
@@ -31,7 +31,7 @@
                               </select>
                             </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label class="control-label col-lg-2">Country Image</label>
                         <div class="col-lg-10">

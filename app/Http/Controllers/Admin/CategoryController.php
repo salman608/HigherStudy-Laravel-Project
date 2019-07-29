@@ -107,6 +107,8 @@ class CategoryController extends Controller
              'description'=>'required'
            ]);
 
+    $category=Category::find($id);
+
     $image=$request->file('image');
      $slug=str_slug($request->title);
      if(isset($image))
@@ -120,12 +122,11 @@ class CategoryController extends Controller
        $image->move('uploads/item',$imagename);
 
      }else{
-       $imagename='default.png';
+       $imagename=$category->image;
        }
-           $category=new Category;
+
            $category->name=$request->name;
            $category->description=$request->description;
-           $category->status=$request->status;
            $category ->image= $imagename;
            $category->save();
           return redirect(route('category.index'))->with('successMsg','Category Update successfully!!');

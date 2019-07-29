@@ -99,7 +99,8 @@ class UniversityController extends Controller
      */
     public function edit($id)
     {
-        //
+        $university=University::find($id);
+        return view('admin.university.edit',compact('university'));
     }
 
     /**
@@ -111,7 +112,38 @@ class UniversityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $this->validate($request,[
+             'name'=>'required',
+             'rank'=>'required',
+           ]);
+
+   $university=University::find($id);
+
+    $image=$request->file('image');
+     $slug=str_slug($request->title);
+     if(isset($image))
+     {
+       $currentData= Carbon::now()->toDateString();
+       $imagename=$slug .'-'. $currentData .'-'. uniqid() .'.'.
+       $image->getClientOriginalExtension();
+       if(!file_exists('uploads/university')){
+           mkdir('uploads/university',0777,true);
+       }
+       $image->move('uploads/university',$imagename);
+
+     }else{
+       $imagename=$university->image;
+       }
+
+           $university->name=$request->name;
+           $university->rank=$request->rank;
+           $university ->image= $imagename;
+           $university->save();
+
+
+
+
+          return redirect(route('university.index'))->with('successMsg','University Update successfully!!');
     }
 
     /**

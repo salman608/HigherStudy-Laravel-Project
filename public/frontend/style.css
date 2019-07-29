@@ -1,3 +1,5 @@
+
+
 .courses_item img{
   height: 250px;
   width: 400px;
@@ -47,7 +49,7 @@ border-color: #4dbf1c;
 }
 
 .home_banner_area .banner_inner{
-  min-height: 500px !important;
+  min-height: 379px !important;
 }
 
 
@@ -62,4 +64,47 @@ border-color: #4dbf1c;
     font-family: "Roboto", sans-serif;
     color: #222222;
     border-bottom: 1px solid transparent;
+}
+
+.categories_post img {
+
+    max-height: 150px!important;
+}
+
+hr.abouthr{
+  border-top: 2px solid green;
+}
+
+hr.categoryhr{
+    border-top: 2px solid green;
+    width: 390px;
+
+}
+
+.blog_banner .banner_inner .overlay{
+  background: url(../uploads/item/homepage.jpg) no-repeat scroll center center;
+  opacity: .5;
+    height: 125%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    z-index: -1;
+    background-size: cover;
+}
+
+.top_menu {
+    background: #04092E;
+
+}
+
+.top_menu .header_social li a {
+  color: white;
+}
+.top_menu .dn_btn{
+  color: white;
+}
+
+.team_area {
+    background: #e3e3e8;
 }

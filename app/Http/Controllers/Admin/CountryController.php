@@ -96,7 +96,9 @@ class CountryController extends Controller
      */
     public function edit($id)
     {
-        //
+      $country=Country::find($id);
+      $category=Category::all();
+      return view('admin.country.edit',compact('country','category'));
     }
 
     /**
@@ -108,7 +110,36 @@ class CountryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $this->validate($request,[
+             'name'=>'required',
+           ]);
+
+           $country=Country::find($id);
+
+    $image=$request->file('image');
+     $slug=str_slug($request->title);
+     if(isset($image))
+     {
+       $currentData= Carbon::now()->toDateString();
+       $imagename=$slug .'-'. $currentData .'-'. uniqid() .'.'.
+       $image->getClientOriginalExtension();
+       if(!file_exists('uploads/country')){
+           mkdir('uploads/country',0777,true);
+       }
+       $image->move('uploads/country',$imagename);
+
+     }else{
+       $imagename=$country->image;
+       }
+
+           $country->name=$request->name;
+           $country ->image= $imagename;
+           $country->save();
+
+           
+
+
+          return redirect(route('country.index'))->with('successMsg','Country Update successfully!!');
     }
 
     /**

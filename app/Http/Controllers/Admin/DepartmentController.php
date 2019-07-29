@@ -76,7 +76,8 @@ class DepartmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $department=Department::find($id);
+        return view('admin.department.edit',compact('department'));
     }
 
     /**
@@ -88,7 +89,17 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $this->validate($request,[
+             'name'=>'required',
+           ]);
+
+          $department=Department::find($id);
+          $department->name=$request->name;
+          $department->save();
+
+
+
+          return redirect(route('department.index'))->with('successMsg','department Update successfully!!');
     }
 
     /**
