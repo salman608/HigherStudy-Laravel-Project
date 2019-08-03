@@ -22,6 +22,8 @@
 // });
 Route::get('/', 'Frontend\HomeController@index');
 
+
+
 Route::get('/categorybycountry/{id}','Frontend\HomeController@categoryByCountry')->name('categorybycountry');
 
 Route::get('/countryByUniversity/{id}','Frontend\HomeController@countryByUniversity')->name('countrybyuniversity');
@@ -33,7 +35,17 @@ Route::get('/confirmCourse/uni/{uni}/dep/{dep}','Frontend\HomeController@confirm
 
 
 
+
+
+
+
+
+
+
 // Agency category show Frontend
+
+Route::get('/categoryByPost/{id}','Frontend\HomeController@categoryByPost')->name('categoryByPost');
+Route::get('/agencypost/{id}','Frontend\HomeController@agencypost')->name('agencypost');
 //admin auth fa-assistive-listening-systems
 
 Route::prefix('admin')->group(function(){
@@ -70,7 +82,7 @@ Route::get('/agencycategory','Admin\AgencyController@index')->name('agencycatego
 
 Auth::routes();
 
-// Route::get('/', 'HomeController@index');
+Route::get('/user', 'HomeController@index')->name('home');
 
 Route::group(['prefix'=>'admin'],function(){
   Route::resource('/category','Admin\CategoryController');
@@ -78,6 +90,7 @@ Route::group(['prefix'=>'admin'],function(){
   Route::resource('/university','Admin\UniversityController');
   Route::resource('/department','Admin\DepartmentController');
   Route::resource('/course','Admin\CourseController');
+
 
 
 });
@@ -102,18 +115,34 @@ Route::get('/course', function () {
     return view('frontend.coursedetails');
 });
 
+// Route::get('/agencyoffer', function () {
+//     return view('frontend.agencyoffer');
+// });
+
+
+
 // Agency part here
 
-Route::get('/user', function () {
-    return view('agency.dashboard');
-});
+// Route::get('/user', function () {
+//     return view('agency.dashboard');
+// });
 Route::get('/user','Agency\AgencyprofileContriller@index');
 
 
 Route::group(['prefix'=>'user'],function(){
   Route::resource('/agencyprofile','Agency\AgencyprofileContriller');
+  Route::resource('/agencypost','Agency\AgencypostController');
+  Route::resource('/studentapply','Agency\Studentapply');
+
 
 });
 
 Route::get('/unactive_agencycategory/{id}','Admin\AgencyController@unactive_agencycategory');
 Route::get('/active_agencycategory/{id}','Admin\AgencyController@active_agencycategory');
+
+
+
+
+Route::get('/student', function () {
+    return view('frontend.student');
+});

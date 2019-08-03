@@ -5,7 +5,7 @@
       <div class="col-lg-12">
           <div class="card-box">
               <div class="card-block">
-                 <h6 class="card-title text-bold">All Course Details</h6>
+                 <h6 class="card-title text-bold">All University Details</h6>
                  <div class="table-responsive">
 
 
@@ -40,6 +40,8 @@
                      <td>{{ $course->id }}</td>
                      <td>
                        @foreach($universities as $university)
+
+
                        {{$university->name }},
                        @endforeach
                     </td>
@@ -61,9 +63,32 @@
                      <td> {{substr(strip_tags($course->schoolarship),0,20) }}{{strlen(strip_tags($course->schoolarship)) > 20 ? "..." : ""}}  </td>
                      <td>{{substr(strip_tags($course->accomodation),0,20) }}{{strlen(strip_tags($course->accomodation)) > 20 ? "..." : ""}}  </td>
 
-                     <td><a class="btn btn-warning" href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></a>
+                     <td class="text-right">
+                                            <div class="dropdown">
+                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                <ul class="dropdown-menu pull-right">
+                                                    <li><a href="{{route('course.edit',$course->id)}}"><i class="fa fa-pencil m-r-5"></i> Edit</a></li>
 
-                     </td>
+                                                    <form id="delete-form-{{ $course->id }}" action="{{route('course.destroy',$course->id)}}" method="POST" style="display:none;">
+                                                    @csrf
+                                                    @method('DELETE')
+
+                                                  </form>
+
+                                                    <li><button type="button" name="button" onclick="if(confirm('Are you sure? You want to delete this?'))
+                                                    {
+                                                      event.preventDefault();
+                                                      document.getElementById('delete-form-{{ $course->id }}').submit();
+                                                    }else{
+                                                      event.preventDefault();
+                                                    }"><i class="fa fa-trash"></i></button></li>
+
+                                                    <li><a href="#" title="Edit" data-toggle="modal" data-target="#edit_ticket"><i class="fa fa-eye m-r-5"></i> View</a></li>
+
+
+                                                </ul>
+                                            </div>
+                                        </td>
                  </tr>
                 @endforeach
           </table>
@@ -74,28 +99,57 @@
  </div>
 
 
- <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
 
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
 
-    </div>
-  </div>
 
-</div>
+  <!-- edit modal -->
+
+  <div id="edit_ticket" class="modal custom-modal fade" role="dialog">
+            <div class="modal-dialog">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div class="modal-content modal-lg">
+                    <div class="modal-header">
+                        <h2 class="modal-title">View University Details</h2>
+                    </div>
+                    <div class="modal-body">
+
+                      <h4>Total  Cost:  {{ $course->course_fee }}</h4>
+                      <h4>Total Seat:   {{ $course->Seat }}</h4>
+                      <h4>Applycation Dateline:  {{ $course->date }}</h4>
+
+                      <blockquote cite="http://">
+                        <h4>Applycation Process</h4>
+
+                         {{substr(strip_tags($course->apply_process),0,500) }}{{strlen(strip_tags($course->apply_process)) > 500 ? "..." : ""}}
+
+                      </blockquote>
+                      <hr style="padding-bottom:2px solid yellow;">
+
+                      <blockquote cite="http://">
+                        <h4>University Requirment</h4>
+                            {{substr(strip_tags($course->requirment),0,500) }}{{strlen(strip_tags($course->requirment)) > 500 ? "..." : ""}}
+                      </blockquote>
+                      <hr>
+
+                      <blockquote cite="http://">
+                        <h4>University Schoolarship</h4>
+
+                            {{substr(strip_tags($course->schoolarship),0,500) }}{{strlen(strip_tags($course->schoolarship)) > 500 ? "..." : ""}}
+                      </blockquote>
+                      <hr>
+
+                      <blockquote cite="http://">
+                        <h4>University Accomodation</h4>
+                          {{substr(strip_tags($course->accomodation),0,500) }}{{strlen(strip_tags($course->accomodation)) > 500 ? "..." : ""}}
+                      </blockquote>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
 
 
 

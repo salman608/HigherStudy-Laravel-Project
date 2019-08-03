@@ -24,12 +24,12 @@
     <div class="main-wrapper">
         <div class="header">
             <div class="header-left">
-                <a href="index.html" class="logo">
-                    <img src="{{URL::to('backend/assets/img/logo.png')}}" width="40" height="40" alt="">
+                <a href="index.html" class="logo" style="color:black;font-size:20px;">
+                     Admin Dashboard
                 </a>
             </div>
             <div class="page-title-box pull-left">
-                <h3>SparkTeam</h3>
+                <h3></h3>
             </div>
             <a id="mobile_btn" class="mobile_btn pull-left" href="#sidebar"><i class="fa fa-bars" aria-hidden="true"></i></a>
             <ul class="nav navbar-nav navbar-right user-menu pull-right">
@@ -45,7 +45,7 @@
                                     <a href="activities.html">
                                         <div class="media-left">
                                             <span class="avatar">
-												<img alt="John Doe" src="assets/img/user.jpg" class="img-responsive img-circle">
+												<img alt="John Doe" src="" class="img-responsive img-circle">
 											</span>
                                         </div>
                                         <div class="media-body">
@@ -111,10 +111,10 @@
 
                 <li class="dropdown">
                     <a href="profile.html" class="dropdown-toggle user-link" data-toggle="dropdown" title="Admin">
-                        <span class="user-img"><img class="img-circle" src="{{URL::to('backend/assets/img/user.jpg')}}" width="40" alt="Admin">
+                        <span class="user-img"><img class="img-circle" src="{{URL::to('backend/images/s.jpg')}}" width="40" alt="Admin">
 
 							<span class="status online"></span></span>
-                        <span></span>
+                        <span>Admin</span>
                         <i class="caret"></i>
                     </a>
                     <ul class="dropdown-menu">
@@ -123,7 +123,7 @@
                         <li><a href="settings.html">Settings</a></li>
                         <li><a href="{{route('admin.logout')}}"
                           onclick="event.preventDefault();
-                          document.getElementById('logout-form').submit();" 
+                          document.getElementById('logout-form').submit();"
                           >Logout</a></li>
                           <form id="logout-form" action="{{route('admin.logout')}}" method="post" style="display: none;">
                             @csrf

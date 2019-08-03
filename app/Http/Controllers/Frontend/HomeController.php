@@ -9,12 +9,17 @@ use App\University;
 use App\Country;
 use App\Department;
 use App\Course;
+use App\Agencyprofile;
+use App\Agencypost;
+use Auth;
+
 
 class HomeController extends Controller
 {
   public function index(){
     $categories = Category::whereStatus(1)->get();
-    return view('frontend.homepage',compact('categories'));
+    $agencyoffer = AgencyProfile::all();
+    return view('frontend.homepage',compact('categories','agencyoffer'));
   }
 
 
@@ -54,6 +59,24 @@ class HomeController extends Controller
     public function agency(){
       return view('layouts.agency');
     }
+
+
+    public function agencyoffer(){
+      $agencyoffer = AgencyProfile::whereStatus(1)->get();
+      return view('frontend.homepage',compact('agencyoffer'));
+    }
+
+    public function categoryByPost($id){
+        $agencypost = Agencypost::where('user_id',$id)->get();
+        $agencyoffer=Agencyprofile::where('user_id',Auth::user()->id)->first();
+        return view('frontend.agencyoffer',compact('agencypost','agencyoffer'));
+      }
+
+      public function agencypost($id){
+          $agencypost = Agencypost::find($id);
+          $agencyoffer=Agencyprofile::where('user_id',Auth::user()->id)->first();
+          return view('frontend.agencypost',compact('agencypost','agencyoffer'));
+        }
 
 
 

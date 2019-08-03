@@ -108,3 +108,45 @@ hr.categoryhr{
 .team_area {
     background: #e3e3e8;
 }
+
+.footer-bottom {
+    padding-top: 51px;
+}
+
+.footer-area p_120{
+padding-top: 70px !important;
+padding-bottom: 50px !important;
+}
+
+
+.blog_right_sidebar .widget_title{
+  background: #04092e;
+}
+
+.blog_right_sidebar .search_widget .input-group .form-control {
+
+    background: #04092e;
+}
+
+.blog_right_sidebar .newsletter_widget .bbtns {
+    background: #04092e;
+}
+
+.banner_area .banner_inner{
+  min-height: 200px;
+}
+
+.blog_area .single-post-area .p_120{
+  padding-top: 0px !important;
+}
+
+.btn-agency{
+  background-color: #04092e;
+  color: white;
+  font-size:12px;
+}
+.btn-agency:hover{
+  background-color: #04091e;
+  color: white;
+
+}

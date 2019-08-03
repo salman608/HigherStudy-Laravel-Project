@@ -21,7 +21,7 @@
         <section class="blog_categorie_area">
             <div class="container">
                   <div class="main_title" style="margin-top:-260px">
-                    <h2 style="font-family: 'Titillium Web', sans-serif;color:black;">Category Study in Abrode</h2>
+                    <h2 style="font-family: 'Titillium Web', sans-serif;color:black;">Degree Lavel</h2>
                     <hr class="categoryhr">
                   </div>
                 <div class="row">
@@ -73,58 +73,65 @@
           <section class="blog_categorie_area">
               <div class="container">
                     <div class="main_title" style="">
-                      <h2 style="color:black;font-family: 'Farro', sans-serif;">Largest Agency in our Country</h2>
+                      <h2 style="color:black;font-family: 'Farro', sans-serif;"> Agencies</h2>
                       <hr class="categoryhr">
                     </div>
                   <div class="row">
+
+
+
+                 @foreach($agencyoffer as $agencyoffer)
                       <div class="col-lg-3">
                           <div class="categories_post">
-                              <img src="frontend/img/blog/cat-post/cat-post-3.jpg" alt="post">
+                              <img src="{{URL::to('uploads/agency/'.$agencyoffer->image)}}" alt="post">
                               <div class="categories_details">
                                   <div class="categories_text">
-                                      <a href="blog-details.html"><h5>Educare Education</h5></a>
+                                  <a href="{{route('categoryByPost',$agencyoffer->user_id)}}"><h5>{{$agencyoffer->title}}</h5></a>
                                       <div class="border_line"></div>
-                                      <p>Enjoy your social life together</p>
+                                      <p>{{$agencyoffer->subtitle}}</p>
                                   </div>
                               </div>
                           </div>
                       </div>
-                      <div class="col-lg-3">
+
+                      @endforeach
+
+                      <!-- <div class="col-lg-3">
                           <div class="categories_post">
                               <img src="frontend/img/blog/cat-post/cat-post-2.jpg" alt="post">
                               <div class="categories_details">
                                   <div class="categories_text">
-                                      <a href="blog-details.html"><h5>Global Study Ltd</h5></a>
+                                      <a href="{{URL::to('/agencyoffer')}}"><h5>Global Study Ltd</h5></a>
                                       <div class="border_line"></div>
                                       <p>Be a part of politics</p>
                                   </div>
                               </div>
                           </div>
-                      </div>
-                      <div class="col-lg-3">
+                      </div> -->
+                      <!-- <div class="col-lg-3">
                           <div class="categories_post">
                               <img src="frontend/img/blog/cat-post/cat-post-1.jpg" alt="post">
                               <div class="categories_details">
                                   <div class="categories_text">
-                                      <a href="blog-details.html"><h5>Visa World Wide Admission</h5></a>
+                                      <a href="{{URL::to('/agencyoffer')}}"><h5>Visa World Wide Admission</h5></a>
                                       <div class="border_line"></div>
                                       <p>Let the food be finished</p>
                                   </div>
                               </div>
                           </div>
-                      </div>
-                      <div class="col-lg-3">
+                      </div> -->
+                      <!-- <div class="col-lg-3">
                           <div class="categories_post">
                               <img src="frontend/img/blog/cat-post/cat-post-1.jpg" alt="post">
                               <div class="categories_details">
                                   <div class="categories_text">
-                                      <a href="blog-details.html"><h5>N&N International Education</h5></a>
+                                      <a href="{{URL::to('/agencyoffer')}}"><h5>N&N International Education</h5></a>
                                       <div class="border_line"></div>
                                       <p>Let the food be finished</p>
                                   </div>
                               </div>
                           </div>
-                      </div>
+                      </div> -->
                   </div>
               </div>
           </section>

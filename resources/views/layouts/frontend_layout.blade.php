@@ -41,6 +41,7 @@
         <div class="float-right">
           <a class="dn_btn" href="tel:+4400123654896">+8801725496104</a>
           <a class="dn_btn" href="mailto:support@colorlib.com">salman@gmail.com</a>
+          <a href="#" style="color:white;font-size:11px;"><i class="fa fa-user"></i>  STUDENT</a>
         </div>
       </div>
     </div>
@@ -61,15 +62,17 @@
               <li class="nav-item"><a class="nav-link" href="{{URL::to('/about')}}">About</a></li>
 
 
-              <li class="nav-item submenu dropdown">
+              <!-- <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ranks</a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="topuniversity.html">Top University</a></li>
                 </ul>
-              </li>
+              </li> -->
               <li class="nav-item"><a class="nav-link" href="{{URL::to('/contact')}}">Contact</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="{{URL::to('/user')}}">Agency Login</a></li>
+              <li class="nav-item"><a class="btn btn-agency mt-4" href="{{route('login')}}"  style="font-family: 'Titillium Web', sans-serif">
+                <i class="fa fa-user"> </i>  AGENCY</a></li>
+
 
 
             </ul>
@@ -196,6 +199,8 @@
   <script src="{{asset('frontend/vendors/counter-up/jquery.counterup.js')}}"></script>
   <script src="{{asset('frontend/js/mail-script.js')}}"></script>
   <script src="{{asset('frontend/js/theme.js')}}"></script>
+
+
 </body>
 
 </html>

@@ -8,7 +8,7 @@
     <div class="banner_inner d-flex align-items-center">
       <div class="container">
         <div class="banner_content text-center">
-          <h2>All University</h2>
+          <h2>University</h2>
           <div class="page_link">
             <a href="index.html">Home</a>
             <a href="#">Country</a>
@@ -25,9 +25,7 @@
   <!--================Blog Agency Area =================-->
           <section class="blog_categorie_area">
               <div class="container">
-                    <div class="main_title" style="margin-top:-160px;">
-                      <h2>Largest Agency in our Country</h2>
-                    </div>
+
                   <div class="row">
                     @foreach($country->universities->sortBy('rank') as $university)
                       <div class="col-lg-3">

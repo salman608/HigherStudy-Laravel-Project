@@ -49,6 +49,7 @@
                         <form action="{{route('agencyprofile.store')}}" method="post" style="width:780px;margin:auto;" enctype="multipart/form-data">
                           @csrf
 
+
                           <div class="form-group">
                             <label for="">Acency Title</label>
                             <input type="text" name="title" class="form-control" id="" placeholder="">

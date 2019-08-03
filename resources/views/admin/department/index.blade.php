@@ -65,7 +65,7 @@
          <a class="btn btn-info" href="{{route('department.edit',$department->id)}}">
                             <i class="fa fa-pencil-square-o"></i></a>
 
-                            <form id="delete-form-{{ $department->id }}" action="{{route('department.destroy',$department->id)}}" method="POST" style="display:none;">
+                      <form id="delete-form-{{ $department->id }}" action="{{route('department.destroy',$department->id)}}" method="POST" style="display:none;">
                       @csrf
                       @method('DELETE')
 

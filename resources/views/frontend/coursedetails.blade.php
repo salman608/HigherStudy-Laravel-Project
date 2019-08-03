@@ -49,6 +49,10 @@
                    <span>{{ $department->name }}</span></a>
                </li>
                <li>
+                 <a >University Rank
+                   <span>{{ $university->rank }}</span></a>
+               </li>
+               <li>
                  <a href="#">Course Fee
                    <span>{{ $course->course_fee }}</span></a>
                </li>

@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Agency;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\AgencyProfile;
+use App\Agencyprofile;
 use Carbon\Carbon;
+use Auth;
 
 class AgencyprofileContriller extends Controller
 {
@@ -16,8 +17,9 @@ class AgencyprofileContriller extends Controller
      */
     public function index()
     {
-       $agencyprofiles=AgencyProfile::all();
-       return view('agency.dashboard',compact('agencyprofiles'));
+       $agencyprofile=Agencyprofile::where('user_id',Auth::user()->id)->first();
+
+       return view('agency.dashboard',compact('agencyprofile'));
     }
 
     /**
@@ -27,6 +29,7 @@ class AgencyprofileContriller extends Controller
      */
     public function create()
     {
+
       return view('agency.agencyprofile.create');
     }
 
@@ -68,6 +71,8 @@ class AgencyprofileContriller extends Controller
 
 
            $agencyprofile= new AgencyProfile();
+
+           $agencyprofile->user_id=Auth::user()->id;
            $agencyprofile->title=$request->title;
            $agencyprofile->subtitle=$request->subtitle;
            $agencyprofile->email=$request->email;
@@ -78,7 +83,7 @@ class AgencyprofileContriller extends Controller
            $agencyprofile->twiter=$request->twiter;
            $agencyprofile->description=$request->description;
            $agencyprofile->image= $imagename;
-           $agencyprofile->status=$request->status;
+
            $agencyprofile->save();
           return redirect(route('agencyprofile.create'))->with('successMsg','Agencyprofile Insert successfully!!');
 
@@ -92,7 +97,9 @@ class AgencyprofileContriller extends Controller
      */
     public function show($id)
     {
-        //
+      $agencyprofile=Agencyprofile::find($id);
+
+      return view('agency.agency_layout',compact('agencyprofile'));
     }
 
     /**
@@ -103,7 +110,7 @@ class AgencyprofileContriller extends Controller
      */
     public function edit($id)
     {
-      $agencyprofile=AgencyProfile::find($id);
+      $agencyprofile=Agencyprofile::find($id);
       return view('agency.agencyprofile.edit',compact('agencyprofile'));
 
     }
@@ -151,6 +158,7 @@ class AgencyprofileContriller extends Controller
 
 
            $agencyprofile->title=$request->title;
+           $agencyprofile->user_id=Auth::user()->id;
            $agencyprofile->subtitle=$request->subtitle;
            $agencyprofile->email=$request->email;
            $agencyprofile->address=$request->address;
@@ -160,9 +168,9 @@ class AgencyprofileContriller extends Controller
            $agencyprofile->twiter=$request->twiter;
            $agencyprofile->description=$request->description;
            $agencyprofile->image= $imagename;
-           
+
            $agencyprofile->save();
-          return redirect(route('agencyprofile.edit'))->with('successMsg','Agencyprofile Update successfully!!');
+          return redirect(route('agencyprofile.index'));
 
     }
 
