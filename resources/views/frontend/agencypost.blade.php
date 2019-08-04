@@ -41,7 +41,7 @@
 
                                     </div>
                                     <ul class="blog_meta list">
-                                        <li><a href="#">Mark wiens<i class="lnr lnr-user"></i></a></li>
+                                        <li><a href="#">Maksudur<i class="lnr lnr-user"></i></a></li>
                                         <li><a href="#">{{$agencypost->created_at->diffForHumans()}}<i class="lnr lnr-calendar-full"></i></a></li>
                                         <li><a href="#">10 Views<i class="lnr lnr-eye"></i></a></li>
                                         <li><a href="#">06 Comments<i class="lnr lnr-bubble"></i></a></li>
@@ -79,7 +79,7 @@
 
 
                         <div class="comments-area">
-                            <h4>05 Comments</h4>
+                            <h4>02 Comments</h4>
                             <div class="comment-list">
                                 <div class="single-comment justify-content-between d-flex">
                                     <div class="user justify-content-between d-flex">
@@ -87,10 +87,10 @@
                                             <img src="img/blog/c1.jpg" alt="">
                                         </div>
                                         <div class="desc">
-                                            <h5><a href="#">Emilly Blunt</a></h5>
-                                            <p class="date">December 4, 2017 at 3:12 pm </p>
+                                            <h5><a href="#">Salman</a></h5>
+                                            <p class="date">April 4, 2019 at 3:12 pm </p>
                                             <p class="comment">
-                                                Never say goodbye till the end comes!
+                                                I want to admit in this university
                                             </p>
                                         </div>
                                     </div>

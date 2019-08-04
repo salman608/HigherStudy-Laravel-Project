@@ -29,6 +29,7 @@
                   <div class="row">
                     @foreach($country->universities->sortBy('rank') as $university)
                       <div class="col-lg-3">
+                        <a href="{{ route('universitybydepartment', $university->id) }}">
                           <div class="categories_post">
                               <img src="{{asset('uploads/university/'.$university->image)}}" alt="post">
                               <div class="categories_details">
@@ -39,6 +40,7 @@
                                   </div>
                               </div>
                           </div>
+                          </a>
                       </div>
                       @endforeach
 

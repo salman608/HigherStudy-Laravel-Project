@@ -150,3 +150,43 @@ padding-bottom: 50px !important;
   color: white;
 
 }
+
+.dash-widget2 {
+    display: block;
+    min-height: 88px;
+    background: #dbdee6;
+    width: 100%;
+    border-color: #04091e;
+    border-radius: 4px;
+    margin-bottom: 30px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.dash-widget2 .dash-widget-icon {
+    border-radius: 4px 0 0 4px;
+    display: block;
+    float: left;
+    height: 88px;
+    width: 150px;
+    text-align: center;
+    font-size: 45px;
+    line-height: 90px;
+    color: #fff;
+}
+
+.dash-widget2 .dash-widget-info {
+    padding: 20px 20px;
+}
+.dash-widget-info {
+    text-align: center;
+}
+
+.dash-widget-info > h3 {
+    font-size: 28px;
+    font-weight: 600;
+    color: black;
+}
+
+.dash-widget-info > span {
+    font-size: 16px;
+}
