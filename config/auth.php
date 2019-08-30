@@ -57,6 +57,17 @@ return [
             'provider' => 'admins',
             'hash' => false,
         ],
+
+        'student' => [
+            'driver' => 'session',
+            'provider' => 'students',
+        ],
+
+        'student-api' => [
+            'driver' => 'token',
+            'provider' => 'students',
+            'hash' => false,
+        ],
     ],
 
     /*
@@ -84,6 +95,11 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
+        ],
+
+        'students' => [
+            'driver' => 'eloquent',
+            'model' => App\Student::class,
         ],
 
         // 'users' => [
@@ -115,6 +131,12 @@ return [
         ],
         'admins' => [
             'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
+        'students' => [
+            'provider' => 'students',
             'table' => 'password_resets',
             'expire' => 60,
         ],

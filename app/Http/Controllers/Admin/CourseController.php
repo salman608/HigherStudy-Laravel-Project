@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 use App\Http\Controllers\Controller;
+use App\Notifications\NewCourseAdd;
 use App\Course;
 use App\Department;
 use App\University;
+use App\Subscribe;
 
 class CourseController extends Controller
 {
@@ -58,6 +61,14 @@ class CourseController extends Controller
            $course->accomodation=$request->accomodation;
            $course->date=$request->date;
            $course->save();
+
+           $subscribers=Subscribe::all();
+           foreach($subscribers as $subscriber){
+               Notification::route('mail', $subscriber->email)
+                     ->notify( New NewCourseAdd ($course));
+           }
+
+
 
 
            return redirect(route('course.index'))->with('successMsg','Course Insert successfully!!');

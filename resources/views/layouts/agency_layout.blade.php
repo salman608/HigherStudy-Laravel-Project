@@ -218,7 +218,7 @@
                     <div class="profile-img">
 
 
-                      <img src="frontend/img/team/team-1.jpg" alt="user" />
+                      <img src="/frontend/img/team/team-1.jpg" alt="user" />
 
 
                         <!-- this is blinking heartbit-->

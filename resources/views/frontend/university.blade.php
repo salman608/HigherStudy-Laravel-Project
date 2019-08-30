@@ -31,7 +31,7 @@
                       <div class="col-lg-3">
                         <a href="{{ route('universitybydepartment', $university->id) }}">
                           <div class="categories_post">
-                              <img src="{{asset('uploads/university/'.$university->image)}}" alt="post">
+                              <img src="{{asset('uploads/university/'.$university->image)}}" alt="post" style="height:150px;">
                               <div class="categories_details">
                                   <div class="categories_text">
                                       <a href="{{ route('universitybydepartment', $university->id) }}"><h5>{{$university->name}}</h5></a>

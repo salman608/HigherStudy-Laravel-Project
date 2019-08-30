@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\AgencyProfile;
+use App\Contact;
 use DB;
 use App\Http\Controllers\Controller;
 
@@ -19,6 +20,11 @@ class AgencyController extends Controller
       $agencyprofiles=AgencyProfile::all();
       return view('admin.agency.index',compact('agencyprofiles'));
     }
+
+    public function contactview(){
+       $datas=Contact::latest()->paginate(5);
+     return view('layouts.admin_layout',compact('datas'));
+   }
 
     /**
      * Show the form for creating a new resource.

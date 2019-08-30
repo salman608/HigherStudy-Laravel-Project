@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/style.css')}}">
+   <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 
 </head>
 
@@ -41,7 +42,10 @@
         <div class="float-right">
           <a class="dn_btn" href="tel:+4400123654896">+8801725496104</a>
           <a class="dn_btn" href="mailto:support@colorlib.com">salman@gmail.com</a>
-          <a href="#" style="color:white;font-size:11px;"><i class="fa fa-user"></i>  STUDENT</a>
+           @guest
+          <a href="{{route('student.login')}}" style="color:white;font-size:11px;"><i class="fa fa-user"></i>  STUDENT</a>
+
+                @endguest
         </div>
       </div>
     </div>
@@ -69,11 +73,36 @@
                 </ul>
               </li> -->
               <li class="nav-item"><a class="nav-link" href="{{URL::to('/contact')}}">Contact</a></li>
-
+           @guest
               <li class="nav-item"><a class="btn btn-agency mt-4" href="{{route('login')}}"  style="font-family: 'Titillium Web', sans-serif">
                 <i class="fa fa-user"> </i>  AGENCY</a></li>
 
 
+                  @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+
+           @endguest
 
             </ul>
           </div>
@@ -142,11 +171,12 @@
               <h3 class="footer_title">Newsletter</h3>
             </div>
             <p>Stay updated with our latest trends</p>
-            <div id="mc_embed_signup">
-              <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative">
+            <div >
+              <form  action="{{ route('subscriber.store') }}" method="POST" >
+                @csrf
                 <div class="input-group d-flex flex-row">
-                  <input name="EMAIL" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
-                  <button class="btn sub-btn"><span class="lnr lnr-arrow-right"></span></button>
+                  <input name="email" placeholder="Enter email address" type="email">
+                  <button class="btn sub-btn" type="submit"><span class="lnr lnr-arrow-right"></span></button>
                 </div>
                 <div class="mt-10 info"></div>
               </form>
@@ -199,8 +229,32 @@
   <script src="{{asset('frontend/vendors/counter-up/jquery.counterup.js')}}"></script>
   <script src="{{asset('frontend/js/mail-script.js')}}"></script>
   <script src="{{asset('frontend/js/theme.js')}}"></script>
+  <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+  <script>
+       $.ajaxSetup({
+       headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+       }
+       });
+    </script>
+    <script src="{{ asset('frontend/ajax.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
+{!! Toastr::message() !!}
 
+<script>
+@if ($errors->any())
+@foreach ($errors->all() as  $error)
+toastr.error('{{ $error }}', 'Error',{
+  closeButton:true,
+  progressBar:true,
+});
+
+@endforeach
+@else
+@endif
+
+</script>
 </body>
 
 </html>

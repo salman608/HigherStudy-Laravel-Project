@@ -57,8 +57,19 @@ Route::prefix('admin')->group(function(){
 
 });
 
+Route::prefix('student')->group(function(){
+
+  Route::get('/login','Auth\StudentLoginController@showLoginForm')->name('student.login');
+  Route::post('/login','Auth\StudentLoginController@login')->name('student.login.submit');
+  Route::get('/dashboard', 'StudentController@student')->name('student');
+  Route::post('/logout','Auth\StudentLoginController@logout')->name('student.logout');
+
+});
 
 
+     Route::get('/user/logout', 'Auth\LoginController@userLogout');
+     Route::get('/admin/logout', 'Auth\AdminLoginController@logout');
+     Route::get('/student/logout', 'Auth\StudentLoginController@logout');
 
 
 
@@ -83,6 +94,7 @@ Route::get('/agencycategory','Admin\AgencyController@index')->name('agencycatego
 Auth::routes();
 
 Route::get('/user', 'HomeController@index')->name('home');
+Route::get('/student', 'StudentController@index');
 
 Route::group(['prefix'=>'admin'],function(){
   Route::resource('/category','Admin\CategoryController');
@@ -90,6 +102,10 @@ Route::group(['prefix'=>'admin'],function(){
   Route::resource('/university','Admin\UniversityController');
   Route::resource('/department','Admin\DepartmentController');
   Route::resource('/course','Admin\CourseController');
+  Route::get('/contact','Admin\ContactController@index')->name('contact.index');
+  Route::delete('/contact/{contact}','Admin\ContactController@destory')->name('contact.destory');
+  Route::delete('/subscriber/{subscriber}','Admin\SubscriberController@destory')->name('subscriber.destory');
+  Route::get('/subscriber','Admin\SubscriberController@index')->name('subscriber.index');
 
 
 
@@ -141,8 +157,9 @@ Route::get('/unactive_agencycategory/{id}','Admin\AgencyController@unactive_agen
 Route::get('/active_agencycategory/{id}','Admin\AgencyController@active_agencycategory');
 
 
+// Contact route is strat Here
 
+Route::post('add/customer/data','ContactController@add');
 
-Route::get('/student', function () {
-    return view('frontend.student');
-});
+// Subscribe route is strat Here
+Route::post('Subscriber','SubscribeController@store')->name('subscriber.store');

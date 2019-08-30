@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Notification;
+use App\Subscribe;
 use App\Department;
 use App\University;
 
@@ -49,6 +51,11 @@ class DepartmentController extends Controller
           $department->name=$request->name;
           $department->save();
           $department->universities()->sync($request->universities);
+
+
+
+
+
 
 
           return redirect(route('department.index'))->with('successMsg','department Insert successfully!!');

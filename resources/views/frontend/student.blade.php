@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- <link rel="icon" href="img/favicon.png" type="image/png"> -->
-  <title>HigherStudy Education</title>
+  <title>Next Stop student panel</title>
   <!-- Bootstrap CSS -->
   <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Titillium+Web|Ubuntu&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.css')}}">
@@ -66,18 +66,34 @@
               <li class="nav-item"><a class="nav-link" href="{{URL::to('/contact')}}">Contact</a></li>
 
 
-                <li class="nav-item dropdown">
-                  <img src="frontend/img/team/team11.jpg" alt="" style="width:50px;height:50px;">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Mahmud
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Profile</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Logout</a>
-        </div>
-      </li>
+              @guest
+                  <li class="nav-item">
+                      <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                  </li>
+                  @if (Route::has('register'))
+                      <li class="nav-item">
+                          <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                      </li>
+                  @endif
+              @else
+                  <li class="nav-item dropdown">
+                      <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                          {{ Auth::user()->name }} <span class="caret"></span>
+                      </a>
+
+                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="{{ route('student.logout') }}"
+                             onclick="event.preventDefault();
+                                           document.getElementById('logout-form').submit();">
+                              {{ __('Logout') }}
+                          </a>
+
+                          <form id="logout-form" action="{{ route('student.logout') }}" method="POST" style="display: none;">
+                              @csrf
+                          </form>
+                      </div>
+                  </li>
+              @endguest
 
 
 
@@ -116,7 +132,7 @@
                           <!-- Section heading -->
                             <!-- <h2 class="h1-responsive font-weight-bold text-center my-5">Welcome, Salman</h2> -->
                           <!-- Section description -->
-                            <p class="grey-text text-center w-responsive mx-auto mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <p class="grey-text text-center w-responsive mx-auto mb-5"  style="color:green; font-size:15px;font-weight:bold;">lossing hope is equal to lossing the life</p>
 
                           <!-- Grid row-->
                             <div class="row text-center text-md-left">
@@ -124,7 +140,7 @@
                                 <!-- Grid column -->
                                     <div class="col-xl-6 col-lg-12 mb-5 d-md-flex ">
                                           <div class="avatar mb-md-0 mb-4 mx-4">
-                                            <img src="frontend/img/team/team11.jpg" class="rounded z-depth-1" alt="Sample avatar" style="max-width: 192px;">
+                                            <img src="{{asset('frontend/img/team/team11.jpg')}}" class="rounded z-depth-1" alt="Sample avatar" style="max-width: 192px;">
                                           </div>
                                           <div class="mx-4">
                                                   <h4 class="font-weight-bold mb-3">Mahmud Hasan</h4>
@@ -346,6 +362,210 @@
     </div>
   </footer>
   <!--================ End footer Area  =================-->
+
+
+  <!-- Modal -->
+<div class="modal fade" id="updateProfile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Update Profile</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+      <div class="modal-body">
+
+
+              @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+<form class="form-horizontal" method="POST" action="#" enctype="multipart/form-data">
+
+                {{ csrf_field() }}
+                <input type="hidden" name="_method" value="PUT">
+
+
+
+              <div class="form-group row">
+                  <label for="name" class="col-sm-4 col-form-label">Name</label>
+
+                  <div class="col-sm-8">
+                      <input id="name" type="text" class="form-control" name="name" required value="">
+
+                      @if ($errors->has('name'))
+                          <span class="help-block">
+                              <strong>{{ $errors->first('name') }}</strong>
+                          </span>
+                      @endif
+                  </div>
+              </div>
+
+
+
+
+              <div class="form-group row">
+                    <label for="email" class="col-sm-4 col-form-label">Email Address</label>
+
+                    <div class="col-sm-8">
+                        <input id="email" type="text" class="form-control" name="email" required value="">
+
+                        @if ($errors->has('email'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="form-group row">
+                    <label for="phone" class="col-sm-4 col-form-label">Phone Number</label>
+
+                    <div class="col-sm-8">
+                        <input id="phone" type="text" class="form-control" name="phone" required value="">
+
+                        @if ($errors->has('phone'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('phone') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="form-group{{ $errors->has('file') ? ' has-error' : '' }} row">
+                    <label for="file" class="col-sm-4 col-form-label">Profile Picture</label>
+
+                    <div class="col-sm-8">
+                        <input id="file" type="file" class="form-control" name="file" >
+
+                        @if ($errors->has('file'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('file') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+
+
+
+
+      </div> {{-- modal body --}}
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+</form>
+    </div> {{-- modal-content --}}
+  </div>
+</div> {{-- end modal --}}
+
+
+<!-- Change password Modal -->
+<div class="modal fade" id="changePass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Change your password</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+
+
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div
+            @endif
+
+    <form class="form-horizontal" method="POST" action="#">
+            {{ csrf_field() }}
+
+            <div class="form-group{{ $errors->has('current-password') ? ' has-error' : '' }} row">
+                <label for="new-password" class="col-sm-4 col-form-label">Current Password</label>
+
+                <div class="col-sm-8">
+                    <input id="current-password" type="password" class="form-control" name="current-password" required>
+
+                    @if ($errors->has('current-password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('current-password') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+
+            <div class="form-group{{ $errors->has('new-password') ? ' has-error' : '' }} row">
+                <label for="new-password" class="col-sm-4 col-form-label">New Password</label>
+
+                <div class="col-sm-8">
+                    <input id="new-password" type="password" class="form-control" name="new-password" required>
+
+                    @if ($errors->has('new-password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('new-password') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="new-password-confirm" class="col-sm-4 col-form-label" style="font-size: 13px;">Confirm New Password</label>
+
+                <div class="col-sm-8">
+                    <input id="new-password-confirm" type="password" class="form-control" name="new-password_confirmation" required>
+                </div>
+            </div>
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </form>
+    </div>
+  </div> {{-- modal-dialog --}}
+</div>  {{-- modal fade --}}
 
 
 

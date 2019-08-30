@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
-    <title>Preadmin - Bootstrap Admin Template</title>
+    <title>Next Stop Admin panel</title>
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/assets/css/bootstrap.min.css')}}">
@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('backend/assets/plugins/morris/morris.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/assets/css/select2/select2.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/assets/css/style.css')}}">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 
 </head>
 
@@ -217,6 +218,24 @@
                             </ul>
                         </li>
 
+                        <li class="submenu">
+                            <a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i> <span> Contact</span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled" style="display: none;">
+                                <li><a href="{{route('contact.index')}}">All Contact </a></li>
+
+
+                            </ul>
+                        </li>
+
+                        <li class="submenu">
+                            <a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i> <span> Subscriber</span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled" style="display: none;">
+                                <li><a href="{{route('subscriber.index')}}">All Subscriber </a></li>
+
+
+                            </ul>
+                        </li>
+
 
                         <li>
                             <a href="calendar.html"><i class="fa fa-calendar" aria-hidden="true"></i> Calendar</a>
@@ -243,6 +262,12 @@
                     </div>
                     <div class="drop-scroll msg-list-scroll">
                         <ul class="list-box">
+
+
+
+
+
+
                             <li>
                                 <a href="chat.html">
                                     <div class="list-item">
@@ -258,7 +283,10 @@
                                     </div>
                                 </a>
                             </li>
-                            <li>
+
+
+
+                            {{-- <li>
                                 <a href="chat.html">
                                     <div class="list-item new-message">
                                         <div class="list-left">
@@ -272,8 +300,8 @@
                                         </div>
                                     </div>
                                 </a>
-                            </li>
-                            <li>
+                            </li> --}}
+                            {{-- <li>
                                 <a href="chat.html">
                                     <div class="list-item">
                                         <div class="list-left">
@@ -332,8 +360,8 @@
                                         </div>
                                     </div>
                                 </a>
-                            </li>
-                            <li>
+                            </li> --}}
+                            {{-- <li>
                                 <a href="chat.html">
                                     <div class="list-item">
                                         <div class="list-left">
@@ -437,7 +465,7 @@
                                         </div>
                                     </div>
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                     <div class="topnav-dropdown-footer">
@@ -462,10 +490,15 @@
      <script type="text/javascript" src="{{asset('backend/assets/css/select2/select2.min.js')}}"></script>
      <script type="text/javascript" src="{{asset('/backend/plugin/tinymce/tinymce.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/plugin/tinymce/init-tinymce.js')}}"></script>
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
 
 
     <script type="text/javascript" src="{{asset('backend/assets/js/app.js')}}"></script>
-    <script type="text/javascript" src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js')}}">		</script>
+    <script type="text/javascript" src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js')}}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.16.3/dist/sweetalert2.all.min.js"></script>
+
+
 
 		<script type="text/javascript">
 		$(document).on('click',"#delete", function(e){
@@ -483,6 +516,101 @@
     $(document).ready(function(){
           $(".select2").select2();
     });
+
+    </script>
+    {!! Toastr::message() !!}
+    <script>
+    @if ($errors->any())
+    @foreach ($errors->all() as  $error)
+    toastr.error('{{ $error }}', 'Error',{
+      closeButton:true,
+      progressBar:true,
+    });
+
+    @endforeach
+    @else
+    @endif
+
+    </script>
+
+    {{-- Delete srript --}}
+
+    <script type="text/javascript">
+    function deletesubscriber(id){
+
+      const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-success',
+    cancelButton: 'btn btn-danger'
+  },
+  buttonsStyling: false
+})
+
+swalWithBootstrapButtons.fire({
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  type: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Yes, delete it!',
+  cancelButtonText: 'No, cancel!',
+  reverseButtons: true
+}).then((result) => {
+  if (result.value) {
+    event.preventDefault();
+    document.getElementById('delete-form-'+id).submit();
+  } else if (
+    /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    swalWithBootstrapButtons.fire(
+      'Cancelled',
+      'Your data is safe :)',
+      'error'
+    )
+  }
+});
+
+    }
+
+    </script>
+
+
+    <script type="text/javascript">
+    function deletecontact(id){
+
+      const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-success',
+    cancelButton: 'btn btn-danger'
+  },
+  buttonsStyling: false
+})
+
+swalWithBootstrapButtons.fire({
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  type: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Yes, delete it!',
+  cancelButtonText: 'No, cancel!',
+  reverseButtons: true
+}).then((result) => {
+  if (result.value) {
+    event.preventDefault();
+    document.getElementById('delete-form-'+id).submit();
+  } else if (
+    /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    swalWithBootstrapButtons.fire(
+      'Cancelled',
+      'Your data is safe :)',
+      'error'
+    )
+  }
+});
+
+    }
 
     </script>
 </body>

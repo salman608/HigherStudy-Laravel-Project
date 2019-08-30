@@ -190,3 +190,18 @@ padding-bottom: 50px !important;
 .dash-widget-info > span {
     font-size: 16px;
 }
+
+
+.header_area .navbar .nav .nav-item .nav-link{
+  font: 500 15px/80px "Roboto", sans-serif;
+}
+
+.load{
+  position: fixed;
+  left: 35%;
+  text-align: center;
+  top: 15%;
+  z-index: 9999;
+  margin: auto;
+  display: none;
+}

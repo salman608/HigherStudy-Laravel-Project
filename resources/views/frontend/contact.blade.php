@@ -45,7 +45,8 @@
                         </div>
                     </div>
                     <div class="col-lg-9">
-                        <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                        <form class="row contact_form" action="{{ url('add/customer/data') }}" method="post" id="contactForm" novalidate="novalidate">
+                          @csrf
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
@@ -54,12 +55,12 @@
                                     <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter Subject">
+                                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter PhoneNumber">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <textarea class="form-control" name="message" id="message" rows="1" placeholder="Enter Message"></textarea>
+                                    <textarea class="form-control" name="description" id="description" rows="1" placeholder="Enter Message"></textarea>
                                 </div>
                             </div>
                             <div class="col-md-12 text-right">
@@ -70,6 +71,10 @@
                 </div>
             </div>
         </section>
+
+          <div class="load">
+            <img src="{{ asset('load.gif') }}" alt="" class="img-fluid loading">
+          </div>
 
 
 

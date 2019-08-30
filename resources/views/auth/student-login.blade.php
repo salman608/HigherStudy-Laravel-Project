@@ -3,12 +3,12 @@
 @section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-7">
+        <div class="col-md-6">
             <div class="card">
-                <div class="card-header text-center" style="color:white;font-weight:bold;font-size:18px;background:#3490dc;">{{ __('Agency Login') }}</div>
+                <div class="card-header text-center" style="color:white;font-weight:bold;font-size:18px;background:#3490dc;">{{ __('student Login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('student.login.submit') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -56,14 +56,6 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-
-                                  @if (Route::has('register'))
-
-                                    <a  class="btn btn-info text-white" href="{{ route('register') }}">{{ __('Register') }}</a>
-
-
-                            @endif
-
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
