@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Agencypost;
 use Carbon\Carbon;
+use Auth;
 
 class AgencypostController extends Controller
 {
@@ -16,7 +17,7 @@ class AgencypostController extends Controller
      */
     public function index()
     {
-       $agencyposts=Agencypost::all();
+       $agencyposts=Agencypost::where('user_id', Auth::user()->id)->get();
         return view('agency.agencypost.index',compact('agencyposts'));
     }
 

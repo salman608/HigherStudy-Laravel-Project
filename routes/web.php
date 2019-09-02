@@ -59,10 +59,15 @@ Route::prefix('admin')->group(function(){
 
 Route::prefix('student')->group(function(){
 
+  Route::get('/register','Auth\StudentRegisterController@showRegistrationForm')->name('student.register');
+  Route::post('/register','Auth\StudentRegisterController@register')->name('student.register');
   Route::get('/login','Auth\StudentLoginController@showLoginForm')->name('student.login');
   Route::post('/login','Auth\StudentLoginController@login')->name('student.login.submit');
   Route::get('/dashboard', 'StudentController@student')->name('student');
   Route::post('/logout','Auth\StudentLoginController@logout')->name('student.logout');
+
+  Route::put('profile_update','Student\SettingController@updateprofile')->name('student.profile.update');
+  Route::put('password-update','Student\SettingController@updatepassword')->name('student.password.update');
 
 });
 
@@ -149,9 +154,14 @@ Route::group(['prefix'=>'user'],function(){
   Route::resource('/agencyprofile','Agency\AgencyprofileContriller');
   Route::resource('/agencypost','Agency\AgencypostController');
   Route::resource('/studentapply','Agency\Studentapply');
+  Route::get('/setting','Agency\SettingController@index')->name('setting');
+  Route::put('profile-update','Agency\SettingController@updateprofile')->name('profile.update');
+  Route::put('password-update','Agency\SettingController@updatepassword')->name('password.update');
 
 
 });
+
+
 
 Route::get('/unactive_agencycategory/{id}','Admin\AgencyController@unactive_agencycategory');
 Route::get('/active_agencycategory/{id}','Admin\AgencyController@active_agencycategory');

@@ -218,7 +218,7 @@
                     <div class="profile-img">
 
 
-                      <img src="/frontend/img/team/team-1.jpg" alt="user" />
+                      <img src="" alt="user" />
 
 
                         <!-- this is blinking heartbit-->
@@ -306,6 +306,14 @@
                         </li>
 
 
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class=" mdi mdi-message"></i><span class="hide-menu">Setting</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="{{route('setting')}}">update profile</a></li>
+
+                            </ul>
+                        </li>
+
+
 
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class=" mdi mdi-message"></i><span class="hide-menu">Contact</span></a>
                             <ul aria-expanded="false" class="collapse">
@@ -383,7 +391,22 @@
     <script src="/agency/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
     <script type="text/javascript" src="{{asset('/agency/plugin/tinymce/tinymce.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('agency/plugin/tinymce/init-tinymce.js')}}"></script>
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
 
+    {!! Toastr::message() !!}
+    <script>
+    @if ($errors->any())
+    @foreach ($errors->all() as  $error)
+    toastr.error('{{ $error }}', 'Error',{
+    closeButton:true,
+    progressBar:true,
+    });
+
+    @endforeach
+    @else
+    @endif
+
+    </script>
 
 </body>
 

@@ -85,7 +85,7 @@ Hello
     <div class="row">
                   <!-- Column -->
                   <div class="col-lg-4 col-xlg-3 col-md-5">
-                      <div class="card"> <img class="card-img" src="{{URL::to('uploads/agency/'.$agencyprofile->image)}}" alt="Card image">
+                      <div class="card"> <img class="card-img" src="@isset($agencyprofile->image){{URL::to('uploads/agency/'.$agencyprofile->image)}}@endisset" alt="Card image">
                           <div class="card-img-overlay card-inverse social-profile d-flex ">
                               <div class="align-self-center"> <img src="" class="img-circle" width="100">
 
@@ -118,7 +118,7 @@ Hello
                                                        <br>
                                                        <br>
 
-                                                      <a href="{{route('agencyprofile.edit',$agencyprofile->id)}}" class="btn btn-primary">Update Agency Profile</a>
+                                                      <a href="{{route('agencyprofile.edit',Auth::user()->id)}}" class="btn btn-primary">Update Agency Profile</a>
                                                   </div>
                                               </div>
                                           </div>

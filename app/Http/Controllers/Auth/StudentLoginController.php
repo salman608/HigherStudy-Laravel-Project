@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Student;
+use Illuminate\Support\Facades\Hash;
 
 class StudentLoginController extends Controller
 {
@@ -23,6 +25,8 @@ class StudentLoginController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+
 
     public function showLoginForm()
     {

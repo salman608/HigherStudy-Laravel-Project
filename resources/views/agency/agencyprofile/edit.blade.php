@@ -46,29 +46,29 @@
                       <h4 class="m-b-0 text-white">Insert Your Agency Profile</h4>
                     </div>
                       <div class="card-body">
-                        <form action="{{route('agencyprofile.update',$agencyprofile->id)}}" method="post" style="width:780px;margin:auto;" enctype="multipart/form-data">
+                        <form action="{{route('agencyprofile.update',Auth::user()->id)}}" method="post" style="width:780px;margin:auto;" enctype="multipart/form-data">
                           @csrf
                           @method('PUT')
 
                           <div class="form-group">
                             <label for="">Acency Title</label>
-                            <input type="text" name="title" class="form-control" id="" value="{{$agencyprofile->title}}">
+                            <input type="text" name="title" class="form-control" id="" value=" @isset($agencyprofile->title){{$agencyprofile->title}}@endisset">
                           </div>
 
                           <div class="form-group">
                             <label for="">Acency SubTitle</label>
-                            <input type="text" name="subtitle" class="form-control" id="" value="{{$agencyprofile->subtitle}}">
+                            <input type="text" name="subtitle" class="form-control" id="" value=" @isset($agencyprofile->subtitle){{$agencyprofile->subtitle}}@endisset">
                           </div>
 
                           <div class="form-group">
                             <label for="">Acency Email</label>
-                            <input type="text" name="email" class="form-control" id="" value="{{$agencyprofile->email}}">
+                            <input type="text" name="email" class="form-control" id="" value=" @isset($agencyprofile->email){{$agencyprofile->email}}@endisset">
                           </div>
 
                           <div class="form-group">
                             <label for="">Acency Adress</label>
                             <textarea name="address" class="form-control" rows="8" cols="100">
-                                 {{$agencyprofile->address}}
+                                 @isset($agencyprofile->address){{$agencyprofile->address}}@endisset
                             </textarea>
                           </div>
 
@@ -79,30 +79,30 @@
 
                           <div class="form-group">
                             <label for="">Acency Phone</label>
-                            <input type="text" name="phone" class="form-control" id="" value="{{$agencyprofile->phone}}">
+                            <input type="text" name="phone" class="form-control" id="" value=" @isset($agencyprofile->phone){{$agencyprofile->phone}}@endisset">
                           </div>
 
                           <div class="form-group">
                             <label for="">Acency website</label>
-                            <input type="text" name="website" class="form-control" id="" value="{{$agencyprofile->website}}">
+                            <input type="text" name="website" class="form-control" id="" value=" @isset($agencyprofile->website){{$agencyprofile->website}}@endisset">
                           </div>
 
 
                           <div class="form-group">
                             <label for="">Facebook</label>
-                            <input type="text" name="facebook" class="form-control" id="" value="{{$agencyprofile->facebook}}">
+                            <input type="text" name="facebook" class="form-control" id="" value=" @isset($agencyprofile->facebook){{$agencyprofile->facebook}}@endisset">
                           </div>
 
                           <div class="form-group">
                             <label for="">Twiter</label>
-                            <input type="text" name="twiter" class="form-control" id="" value="{{$agencyprofile->twiter}}">
+                            <input type="text" name="twiter" class="form-control" id="" value=" @isset($agencyprofile->twiter){{$agencyprofile->twiter}}@endisset">
                           </div>
 
 
                           <div class="form-group">
                             <label for="">Description</label>
                             <textarea name="description" class="tinymce" rows="5" cols="80">
-                                {{$agencyprofile->description}}
+                                 @isset($agencyprofile->description){{$agencyprofile->description}}@endisset
                             </textarea>
                           </div>
 

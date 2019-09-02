@@ -18,7 +18,6 @@ class AgencyprofileContriller extends Controller
     public function index()
     {
        $agencyprofile=Agencyprofile::where('user_id',Auth::user()->id)->first();
-
        return view('agency.dashboard',compact('agencyprofile'));
     }
 
@@ -110,7 +109,7 @@ class AgencyprofileContriller extends Controller
      */
     public function edit($id)
     {
-      $agencyprofile=Agencyprofile::find($id);
+      $agencyprofile=Agencyprofile::where('user_id',$id)->first();
       return view('agency.agencyprofile.edit',compact('agencyprofile'));
 
     }
@@ -126,6 +125,7 @@ class AgencyprofileContriller extends Controller
     {
 
 
+
       $this->validate($request,[
         'title'=>'required',
         'subtitle'=>'required',
@@ -136,8 +136,8 @@ class AgencyprofileContriller extends Controller
 
       ]);
 
-       $agencyprofile=AgencyProfile::find($id);
-
+       $agencyprofile=AgencyProfile::where('user_id',$id)->first();
+       
       $image=$request->file('image');
        $slug=str_slug($request->title);
        if(isset($image))

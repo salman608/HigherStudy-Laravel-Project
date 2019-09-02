@@ -5,7 +5,8 @@ $(function(){
     var url =form.attr("action");
     var type=form.attr("method");
     var data=form.serialize();
-
+console.log(form);
+console.log(data);
     $.ajax({
       url:url,
       data:data,
@@ -19,7 +20,7 @@ $(function(){
       if(data=="success"){
         $("#exampleModal").modal("hide");
         swal("Great","Insert customer data Successfully!!","success");
-        
+
 
       }
 

@@ -46,6 +46,9 @@
           <a href="{{route('student.login')}}" style="color:white;font-size:11px;"><i class="fa fa-user"></i>  STUDENT</a>
 
                 @endguest
+
+                
+
         </div>
       </div>
     </div>

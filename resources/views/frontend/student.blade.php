@@ -110,7 +110,7 @@
       <div class="banner_inner d-flex align-items-center">
         <div class="container">
           <div class="banner_content text-center">
-            <h2>Welcome, Mahmud</h2>
+            <h2>Welcome, {{Auth::user()->name}}</h2>
             <div class="page_link">
               <a href="index.html"></a>
 
@@ -143,8 +143,8 @@
                                             <img src="{{asset('frontend/img/team/team11.jpg')}}" class="rounded z-depth-1" alt="Sample avatar" style="max-width: 192px;">
                                           </div>
                                           <div class="mx-4">
-                                                  <h4 class="font-weight-bold mb-3">Mahmud Hasan</h4>
-                                                  <h6 class="font-weight-bold grey-text mb-3">mahmud@gmanil.com</h6>
+                                                  <h4 class="font-weight-bold mb-3">{{Auth::user()->name}}</h4>
+                                                  <h6 class="font-weight-bold grey-text mb-3">{{ Auth::user()->email }}</h6>
                                                   <p class="grey-text">01725496104</p>
 
 
@@ -378,22 +378,10 @@
       <div class="modal-body">
 
 
-              @if (session('error'))
-                    <div class="alert alert-danger">
-                        {{ session('error') }}
-                    </div>
-                @endif
+<form class="form-horizontal form-material" method="POST" enctype="multipart/form-data" action="{{ route('student.profile.update') }}">
 
-                @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
-
-<form class="form-horizontal" method="POST" action="#" enctype="multipart/form-data">
-
-                {{ csrf_field() }}
-                <input type="hidden" name="_method" value="PUT">
+            @csrf
+            @method("PUT")
 
 
 
@@ -401,67 +389,24 @@
                   <label for="name" class="col-sm-4 col-form-label">Name</label>
 
                   <div class="col-sm-8">
-                      <input id="name" type="text" class="form-control" name="name" required value="">
-
-                      @if ($errors->has('name'))
-                          <span class="help-block">
-                              <strong>{{ $errors->first('name') }}</strong>
-                          </span>
-                      @endif
+                      <input id="name" type="text" class="form-control" name="name"  value="{{ Auth::user()->name }}">
                   </div>
               </div>
-
-
-
 
               <div class="form-group row">
                     <label for="email" class="col-sm-4 col-form-label">Email Address</label>
 
                     <div class="col-sm-8">
-                        <input id="email" type="text" class="form-control" name="email" required value="">
+                        <input id="email" type="text" class="form-control" name="email"  value="{{ Auth::user()->email }}">
 
-                        @if ($errors->has('email'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('email') }}</strong>
-                            </span>
-                        @endif
                     </div>
                 </div>
-
-
-
-
-
 
                 <div class="form-group row">
-                    <label for="phone" class="col-sm-4 col-form-label">Phone Number</label>
-
-                    <div class="col-sm-8">
-                        <input id="phone" type="text" class="form-control" name="phone" required value="">
-
-                        @if ($errors->has('phone'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('phone') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
-
-
-
-
-
-                <div class="form-group{{ $errors->has('file') ? ' has-error' : '' }} row">
                     <label for="file" class="col-sm-4 col-form-label">Profile Picture</label>
 
                     <div class="col-sm-8">
-                        <input id="file" type="file" class="form-control" name="file" >
-
-                        @if ($errors->has('file'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('file') }}</strong>
-                            </span>
-                        @endif
+                        <input id="file" type="file" class="form-control" name="image" >
                     </div>
                 </div>
 
@@ -492,66 +437,33 @@
       </div>
       <div class="modal-body">
 
-        @if (session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
-            @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
+        <form class="form-horizontal form-material" method="POST"  action="{{ route('student.password.update') }}">
+            @csrf
+            @method('PUT')
 
 
-
-
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div
-            @endif
-
-    <form class="form-horizontal" method="POST" action="#">
-            {{ csrf_field() }}
-
-            <div class="form-group{{ $errors->has('current-password') ? ' has-error' : '' }} row">
+            <div class="form-group row">
                 <label for="new-password" class="col-sm-4 col-form-label">Current Password</label>
 
                 <div class="col-sm-8">
-                    <input id="current-password" type="password" class="form-control" name="current-password" required>
+                    <input id="current-password" type="password" class="form-control" name="old_password" placeholder="Enter old Password" >
 
-                    @if ($errors->has('current-password'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('current-password') }}</strong>
-                        </span>
-                    @endif
-                </div>
-            </div>
-
-            <div class="form-group{{ $errors->has('new-password') ? ' has-error' : '' }} row">
-                <label for="new-password" class="col-sm-4 col-form-label">New Password</label>
-
-                <div class="col-sm-8">
-                    <input id="new-password" type="password" class="form-control" name="new-password" required>
-
-                    @if ($errors->has('new-password'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('new-password') }}</strong>
-                        </span>
-                    @endif
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="new-password-confirm" class="col-sm-4 col-form-label" style="font-size: 13px;">Confirm New Password</label>
+                <label for="new-password" class="col-sm-4 col-form-label">New Password</label>
 
                 <div class="col-sm-8">
-                    <input id="new-password-confirm" type="password" class="form-control" name="new-password_confirmation" required>
+                    <input id="new-password" type="password" class="form-control" name="password" placeholder="Enter New Password" >
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="new-password-confirm" class="col-sm-4 col-form-label" style="font-size: 13px;">Confirm Password</label>
+
+                <div class="col-sm-8">
+                    <input id="new-password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Reenter new Password">
                 </div>
             </div>
 
@@ -567,6 +479,29 @@
   </div> {{-- modal-dialog --}}
 </div>  {{-- modal fade --}}
 
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+
+
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div
+    @endif
 
 
 
@@ -590,6 +525,22 @@
   <script src="{{asset('frontend/vendors/counter-up/jquery.counterup.js')}}"></script>
   <script src="{{asset('frontend/js/mail-script.js')}}"></script>
   <script src="{{asset('frontend/js/theme.js')}}"></script>
+  <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+
+  {!! Toastr::message() !!}
+  <script>
+  @if ($errors->any())
+  @foreach ($errors->all() as  $error)
+  toastr.error('{{ $error }}', 'Error',{
+  closeButton:true,
+  progressBar:true,
+  });
+
+  @endforeach
+  @else
+  @endif
+
+  </script>
 
 
 </body>

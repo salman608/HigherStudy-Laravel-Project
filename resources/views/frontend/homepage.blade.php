@@ -96,42 +96,11 @@
 
                       @endforeach
 
-                      <!-- <div class="col-lg-3">
-                          <div class="categories_post">
-                              <img src="frontend/img/blog/cat-post/cat-post-2.jpg" alt="post">
-                              <div class="categories_details">
-                                  <div class="categories_text">
-                                      <a href="{{URL::to('/agencyoffer')}}"><h5>Global Study Ltd</h5></a>
-                                      <div class="border_line"></div>
-                                      <p>Be a part of politics</p>
-                                  </div>
-                              </div>
-                          </div>
-                      </div> -->
-                      <!-- <div class="col-lg-3">
-                          <div class="categories_post">
-                              <img src="frontend/img/blog/cat-post/cat-post-1.jpg" alt="post">
-                              <div class="categories_details">
-                                  <div class="categories_text">
-                                      <a href="{{URL::to('/agencyoffer')}}"><h5>Visa World Wide Admission</h5></a>
-                                      <div class="border_line"></div>
-                                      <p>Let the food be finished</p>
-                                  </div>
-                              </div>
-                          </div>
-                      </div> -->
-                      <!-- <div class="col-lg-3">
-                          <div class="categories_post">
-                              <img src="frontend/img/blog/cat-post/cat-post-1.jpg" alt="post">
-                              <div class="categories_details">
-                                  <div class="categories_text">
-                                      <a href="{{URL::to('/agencyoffer')}}"><h5>N&N International Education</h5></a>
-                                      <div class="border_line"></div>
-                                      <p>Let the food be finished</p>
-                                  </div>
-                              </div>
-                          </div>
-                      </div> -->
+
+
+
+
+                     
                   </div>
               </div>
           </section>
