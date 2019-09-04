@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 use App\Category;
 use App\University;
 use App\Country;
@@ -63,6 +64,7 @@ class HomeController extends Controller
 
     public function agencyoffer(){
       $agencyoffer = AgencyProfile::whereStatus(1)->get();
+
       return view('frontend.homepage',compact('agencyoffer'));
     }
 
@@ -74,6 +76,12 @@ class HomeController extends Controller
 
       public function agencypost($id){
           $agencypost = Agencypost::find($id);
+
+          $postcount='post_' .$agencypost->id;
+          if (!Session::has($postcount)) {
+            $agencypost->increment('view_count');
+            Session::put($postcount,1);
+          }
           $agencyoffer=Agencyprofile::where('user_id',Auth::user()->id)->first();
           return view('frontend.agencypost',compact('agencypost','agencyoffer'));
         }

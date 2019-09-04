@@ -37,9 +37,9 @@
 
                                         </div>
                                         <ul class="blog_meta list">
-                                            <li><a href="#">{{ $agencypost->title}}<i class="lnr lnr-user"></i></a></li>
+                                            <li><a href="#">{{ Auth::user()->name}}<i class="lnr lnr-user"></i></a></li>
                                             <li><a href="#">{{$agencypost->created_at->diffForHumans()}}<i class="lnr lnr-calendar-full"></i></a></li>
-                                            <li><a href="#">10Views<i class="lnr lnr-eye"></i></a></li>
+                                            <li><a href="#">{{ $agencypost->view_count }}   view<i class="lnr lnr-eye"></i></a></li>
                                             <li><a href="#">06 Comments<i class="lnr lnr-bubble"></i></a></li>
                                         </ul>
                                     </div>

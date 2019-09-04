@@ -140,7 +140,7 @@
                                 <!-- Grid column -->
                                     <div class="col-xl-6 col-lg-12 mb-5 d-md-flex ">
                                           <div class="avatar mb-md-0 mb-4 mx-4">
-                                            <img src="{{asset('frontend/img/team/team11.jpg')}}" class="rounded z-depth-1" alt="Sample avatar" style="max-width: 192px;">
+                                            <img src="{{URL::asset('uploads/sprofile/'.Auth::user()->image)}}" class="rounded z-depth-1" alt="Sample avatar" style="max-width: 192px;height:231px;">
                                           </div>
                                           <div class="mx-4">
                                                   <h4 class="font-weight-bold mb-3">{{Auth::user()->name}}</h4>

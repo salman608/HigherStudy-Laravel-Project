@@ -41,9 +41,9 @@
 
                                     </div>
                                     <ul class="blog_meta list">
-                                        <li><a href="#">Maksudur<i class="lnr lnr-user"></i></a></li>
+                                        <li><a href="#">{{ Auth::user()->name }}<i class="lnr lnr-user"></i></a></li>
                                         <li><a href="#">{{$agencypost->created_at->diffForHumans()}}<i class="lnr lnr-calendar-full"></i></a></li>
-                                        <li><a href="#">10 Views<i class="lnr lnr-eye"></i></a></li>
+                                        <li><a href="#">{{ $agencypost->view_count }}Views<i class="lnr lnr-eye"></i></a></li>
                                         <li><a href="#">06 Comments<i class="lnr lnr-bubble"></i></a></li>
                                     </ul>
 
@@ -224,6 +224,27 @@
                                 <div class="br"></div>
                                 <p>If you interest apply this offer please click </p>
                                 <a href="#" class="btn"  data-toggle="modal" data-target=".bd-example-modal-lg" style="background:#04091e;color:white;">Apply Now</a>
+                                  <div class="br"></div>
+                            </aside>
+
+
+                            <aside class="single-sidebar-widget newsletter_widget">
+                                <h4 class="widget_title">Newsletter</h4>
+                                <p>
+                                Here, I focus on a range of items and features that we use in life without
+                                giving them a second thought.
+                                </p>
+                                <div class="form-group d-flex flex-row">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+                                        </div>
+                                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'">
+                                    </div>
+                                    <a href="#" class="bbtns">Subcribe</a>
+                                </div>
+                                <p class="text-bottom">You can unsubscribe at any time</p>
+                                <div class="br"></div>
                             </aside>
 
 

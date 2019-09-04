@@ -218,7 +218,7 @@
                     <div class="profile-img">
 
 
-                      <img src="" alt="user" />
+                      <img src="{{URL::asset('uploads/profile/'.Auth::user()->image)}}" alt="user" style="width:80px;height:80px;" />
 
 
                         <!-- this is blinking heartbit-->

@@ -19,7 +19,7 @@ class StudentRegisterController extends Controller
  {
     $this->validate($request, [
      'name' => 'required|max:255',
-     'email' => 'required|max:255|email',
+     'email' => 'required|unique:students|max:255|email',
      'password' => 'required|confirmed|min:8'
     ]);
 
