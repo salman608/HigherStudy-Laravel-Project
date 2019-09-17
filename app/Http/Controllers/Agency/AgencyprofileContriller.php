@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Agency;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Agencyprofile;
+use App\Subscribe;
+use App\Agencypost;
+use App\Studentapplication;
 use Carbon\Carbon;
 use Auth;
 
@@ -18,7 +21,10 @@ class AgencyprofileContriller extends Controller
     public function index()
     {
        $agencyprofile=Agencyprofile::where('user_id',Auth::user()->id)->first();
-       return view('agency.dashboard',compact('agencyprofile'));
+       $subscribe_count=Subscribe::all();
+       $agency_count=Agencypost::all();
+       $apply=Studentapplication::all();
+       return view('agency.dashboard',compact('agencyprofile','subscribe_count','agency_count','apply'));
     }
 
     /**
@@ -137,7 +143,7 @@ class AgencyprofileContriller extends Controller
       ]);
 
        $agencyprofile=AgencyProfile::where('user_id',$id)->first();
-       
+
       $image=$request->file('image');
        $slug=str_slug($request->title);
        if(isset($image))

@@ -10,9 +10,9 @@
         <div class="banner_content text-center">
           <h2>University</h2>
           <div class="page_link">
-            <a href="index.html">Home</a>
-            <a href="#">Country</a>
-            <a href="about-us.html">University</a>
+            <a href="{{URL::to('/')}}">Home</a>
+            <a href="">Country</a>
+
           </div>
         </div>
       </div>
@@ -23,6 +23,9 @@
 
 
   <!--================Blog Agency Area =================-->
+
+        @if($count>0)
+
           <section class="blog_categorie_area">
               <div class="container">
 
@@ -37,17 +40,32 @@
                                       <a href="{{ route('universitybydepartment', $university->id) }}"><h5>{{$university->name}}</h5></a>
                                       <div class="border_line"></div>
                                       <p>World Rank - {{$university->rank}}</p>
+                                       <p style="display:none;">Rank - {{$count}}</p>
                                   </div>
                               </div>
                           </div>
                           </a>
                       </div>
                       @endforeach
+                    @else
+                       <div class="text-center mb-5">
+                         <h2>University List is Comming Soon</h2>
+                         <h3> Data is not Available,, please wait </h3>
+
+                       </div>
+                     @endif
+
 
                   </div>
               </div>
           </section>
-          <!--================Blog Agency Area =================-->
+        {{-- @else
+           <div class=" ">
+             <h3> Hello</h3>
+           </div>
+         @endif --}}
+
+
 
 
 

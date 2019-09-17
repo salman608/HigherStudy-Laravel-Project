@@ -12,7 +12,7 @@
         <div class="banner_content text-center">
           <h2>{{$agencyoffer->title}}</h2>
           <div class="page_link">
-
+            <a href="{{ route('/') }}">Home</a>
             <a href="about-us.html"></a>
           </div>
         </div>
@@ -46,7 +46,7 @@
                                         <li><a href="#">{{ $user->name }}<i class="lnr lnr-user"></i></a></li>
                                         <li><a href="#">{{$agencypost->created_at->diffForHumans()}}<i class="lnr lnr-calendar-full"></i></a></li>
                                         <li><a href="#">{{ $agencypost->view_count }}Views<i class="lnr lnr-eye"></i></a></li>
-
+                                        <li><a href="#">06 Comments<i class="lnr lnr-bubble"></i></a></li>
                                     </ul>
 
                                 </div>
@@ -75,9 +75,110 @@
 
 
 
-                        <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v4.0&appId=503045603773707&autoLogAppEvents=1"></script>
-    <div class="fb-comments" data-href="http://127.0.0.1:8000/agencypost/4" data-width="800px" data-numposts="5"></div>
+
+
+
+
+
+                        {{-- <div class="comments-area">
+                            <h4>02 Comments</h4>
+
+                        </div> --}}
+
+                        {{-- --------------- --}}
+
+                        <div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md">
+            <div class="card card-default ">
+                <div class="card-header">Comment Area</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    <form id="comment-form" method="post" action="" >
+                        {{ csrf_field() }}
+                        <input type="hidden" name="user_id" value="" >
+                        <div class="row" style="padding: 10px;">
+                            <div class="form-group">
+                                <textarea class="form-control" name="comment" placeholder="Write something from your heart..!" rows="3" cols="90"></textarea>
+
+
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 0 10px 0 10px;">
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary " style="width: 100%" name="submit">
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    {{-- @push('css')
+      <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    @endpush --}}
+
+    <div class="row">
+
+
+
+
+         <div class="col-md-8 col-md">
+            <div class="card card-default">
+                <div class="card-header">Comments</div>
+
+                <div class="card-body comment-container" >
+
+                        <div class="card card-body bg-dark">
+                            <i><b> salman </b></i>&nbsp;&nbsp;
+                            <span>hi brother </span>
+                            <div style="margin-left:10px;">
+                                <a style="cursor: pointer;"  class="reply">Reply</a>&nbsp;
+                                <a style="cursor: pointer;"  class="delete-comment"  >Delete</a>
+                                <div class="reply-form">
+
+                                    <!-- Dynamic Reply form -->
+
+                                </div>
+
+
+                                        <div class="card card-body bg-light">
+                                            <i><b> dipu </b></i>&nbsp;&nbsp;
+                                            <span> hi </span>
+                                            <div style="margin-left:10px;">
+                                                <a  style="cursor: pointer;" class="reply-to-reply" >Reply</a>&nbsp;<a  class="delete-reply" >Delete</a>
+                                            </div>
+                                            <div class="reply-to-reply-form">
+
+                                                <!-- Dynamic Reply form -->
+
+                                            </div>
+
+                                        </div>
+
+
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
 
 
 
@@ -88,10 +189,6 @@
                         {{-- ------------------------ --}}
 
                     </div>
-
-
-
-
                     <div class="col-lg-4">
                         <div class="blog_right_sidebar">
                             <aside class="single_sidebar_widget search_widget">
@@ -118,10 +215,10 @@
 
                                 <div class="br"></div>
                                 @if(Auth::guard('student')->check())
-                                <p>If you interested to apply this offer , you can take help from agenceis </p>
+                                <p>If you interest apply this offer please click </p>
                                 <a href="#" class="btn"  data-toggle="modal" data-target=".bd-example-modal-lg" style="background:#04091e;color:white;">Apply Now</a>
                                 @elseif(!Auth::guard('student')->check())
-                                <p>Please <a href="{{ route('student.login') }}">login </a> to apply</p>
+                                <p>Please login to apply</p>
                                 @endif()
                                   <div class="br"></div>
                             </aside>

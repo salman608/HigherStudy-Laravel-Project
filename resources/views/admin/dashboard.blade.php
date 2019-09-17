@@ -6,7 +6,7 @@
           <div class="dash-widget dash-widget5">
               <span class="dash-widget-icon bg-success"><i class="fa fa-university" aria-hidden="true"></i></span>
               <div class="dash-widget-info">
-                  <h3>20</h3>
+                  <h3>{{ $university_count->count() }}</h3>
                   <span>University</span>
               </div>
           </div>
@@ -15,7 +15,7 @@
           <div class="dash-widget dash-widget5">
               <span class="dash-widget-icon bg-info"><i class="fa fa-users" aria-hidden="true"></i></span>
               <div class="dash-widget-info">
-                  <h3>4</h3>
+                  <h3>{{$agency_count->count()}}</h3>
                   <span>Agency</span>
               </div>
           </div>
@@ -24,7 +24,7 @@
           <div class="dash-widget dash-widget5">
               <span class="dash-widget-icon bg-warning"><i class="fa fa-graduation-cap"></i></span>
               <div class="dash-widget-info">
-                  <h3>10</h3>
+                  <h3>{{ $student_view->count() }}</h3>
                   <span>Student</span>
               </div>
           </div>
@@ -33,8 +33,50 @@
           <div class="dash-widget dash-widget5">
               <span class="dash-widget-icon bg-danger"><i class="fa fa-flag" aria-hidden="true"></i></span>
               <div class="dash-widget-info">
-                  <h3>7</h3>
+                  <h3>{{ $country_count->count() }}</h3>
                   <span>Country</span>
+              </div>
+          </div>
+      </div>
+
+      <div class="col-md-6 col-sm-6 col-lg-3">
+          <div class="dash-widget dash-widget5">
+              <span class="dash-widget-icon bg-info"><i class="fa fa-book" aria-hidden="true"></i></span>
+              <div class="dash-widget-info">
+                  <h3>{{ $dept_count->count() }}</h3>
+                  <span>Department</span>
+              </div>
+          </div>
+      </div>
+
+      <div class="col-md-6 col-sm-6 col-lg-3">
+          <div class="dash-widget dash-widget5">
+              <span class="dash-widget-icon"  style="background:#082D76 ;"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+              <div class="dash-widget-info">
+                  <h3>{{ $subscribe_count->count() }}</h3>
+                  <span>Subscriber</span>
+              </div>
+          </div>
+      </div>
+
+      <div class="col-md-6 col-sm-6 col-lg-3">
+          <div class="dash-widget dash-widget5">
+              <span class="dash-widget-icon" style="background:#900C3F  ;"><i class="fa fa-newspaper-o" aria-hidden="true"></i></span>
+              <div class="dash-widget-info">
+                  <h3>{{ $course_count->count() }}</h3>
+                  <span>Course</span>
+              </div>
+          </div>
+      </div>
+
+
+
+      <div class="col-md-6 col-sm-6 col-lg-3">
+          <div class="dash-widget dash-widget5">
+              <span class="dash-widget-icon " style="background:#DA3816 ;"><i class="fa fa-envelope-open-o" aria-hidden="true"></i></span>
+              <div class="dash-widget-info">
+                  <h3>{{ $message_count->count() }}</h3>
+                  <span>Message</span>
               </div>
           </div>
       </div>

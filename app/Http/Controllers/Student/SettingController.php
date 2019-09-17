@@ -9,6 +9,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\User;
+use App\Studentapplication;
 
 use App\Student;
 
@@ -86,5 +87,11 @@ class SettingController extends Controller
           return redirect()->back();
 
       }
+    }
+
+
+    public function applyhistory(){
+
+
     }
 }

@@ -25,7 +25,7 @@
     <div class="main-wrapper">
         <div class="header">
             <div class="header-left">
-                <a href="index.html" class="logo" style="color:black;font-size:20px;">
+                <a href="{{ route('adashboard') }}" class="logo" style="color:black;font-size:20px;">
                      Admin Dashboard
                 </a>
             </div>
@@ -149,7 +149,7 @@
                     <ul>
                         <li class="menu-title">Main</li>
                         <li class="active">
-                            <a href=""><i class="fa fa-dashboard"></i> Dashboard</a>
+                            <a href="{{ route('adashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a>
                         </li>
 
                         <li class="submenu">

@@ -32,10 +32,9 @@
       <div class="container">
         <div class="float-left">
           <ul class="list header_social">
-            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+            <li><a href="https://www.facebook.com/salman6633" target="_blank"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="https://twitter.com/salman_designer" target="_blank"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/salman-rahman-02b956147/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
           </ul>
         </div>
         <div class="float-right">
@@ -49,7 +48,7 @@
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <!-- Brand and toggle get grouped for better mobile display -->
-          <a class="navbar-brand logo_h" href="index.html"><img src="frontend/img/StudyAbroad.png" alt=""></a>
+          <a class="navbar-brand logo_h" style="font-weight:bold;" href="{{ route('student') }}">Student Dashboard</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -162,7 +161,7 @@
                                                                    </div>
                                                                    <div class="col-md-8 ">
 
-                                                                        <p style="font-size: 24px">Your Total Apply : 2 </p>
+                                                                        <p style="font-size: 24px">Your Total Apply :{{ $hi->count() }} </p>
 
                                                                    </div>
                                                                </div>
@@ -235,27 +234,33 @@
     <thead>
       <tr>
         <th scope="col">Application Id</th>
-        <th scope="col">University Name</th>
         <th scope="col">Country Name</th>
-        <th scope="col">Applycation Date</th>
+        <th scope="col">preferdegree</th>
+        <th scope="col">Apply Date</th>
         <th scope="col">View Full History</th>
       </tr>
     </thead>
+
+
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Diu</td>
-        <td>Bangladesh</td>
-        <td>12-5-2019</td>
-        <td><a class="btn btn-warning" href="#"><i class="fa fa-eye"></i></a></td>
-      </tr>
+      @foreach ($hi as $history)
+
       <tr>
         <th scope="row">2</th>
-        <td>Dhaka university</td>
-        <td>Bangladesh</td>
-        <td>12-6-2019</td>
+        {{-- <td>@if($history->agency($history->agency_id))
+
+            {{ $details->title }}
+
+           @endif
+        </td> --}}
+
+        <td>{{ $history->country }}</td>
+        <td>{{$history->preferdegree}}</td>
+        <td>{{ $history->created_at }}</td>
       <td><a class="btn btn-warning" href="#"><i class="fa fa-eye"></i></a></td>
       </tr>
+
+        @endforeach
 
 
 
@@ -283,10 +288,9 @@
           <div class="single-footer-widget tp_widgets">
             <h6 class="footer_title">Top Products</h6>
             <ul class="list">
-              <li><a href="#">Managed Website</a></li>
-              <li><a href="#">Manage Reputation</a></li>
-              <li><a href="#">Power Tools</a></li>
-              <li><a href="#">Marketing Service</a></li>
+              <li><a href="https://www.mit.edu/" target="_blank">MIT</a></li>
+              <li><a href="https://www.stanford.edu/" target="_blank">Stanford University</a></li>
+              <li><a href="https://www.harvard.edu/" target="_blank">Harvard university</a></li>
             </ul>
           </div>
         </div>
@@ -294,10 +298,10 @@
           <div class="single-footer-widget tp_widgets">
             <h6 class="footer_title">Quick Links</h6>
             <ul class="list">
-              <li><a href="#">Top University</a></li>
-              <li><a href="#">Full Scholarship</a></li>
-              <li><a href="#">Europe</a></li>
-              <li><a href="#">Terms of Service</a></li>
+              <li><a href="https://www.4icu.org/bd/" target="_blank">Top University</a></li>
+              <li><a href="https://www.scholarships.com/financial-aid/college-scholarships/scholarship-information/" target="_blank">Full Scholarship</a></li>
+              <li><a href="https://www.timeshighereducation.com/student/best-universities/best-universities-europe" target="_blank">Europe</a></li>
+              <li><a href="" target="_blank">Terms of Service</a></li>
             </ul>
           </div>
         </div>
@@ -305,10 +309,10 @@
           <div class="single-footer-widget tp_widgets">
             <h6 class="footer_title">Features</h6>
             <ul class="list">
-              <li><a href="#">North America </a></li>
-              <li><a href="#">South America</a></li>
-              <li><a href="#">Central America</a></li>
-              <li><a href="#">Asia</a></li>
+              <li><a href="https://www.na.edu/" target="_blank">North America </a></li>
+              <li><a href="https://www.timeshighereducation.com/" target="_blank">South America</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Central_American_University_(Managua)" target="_blank">Central America</a></li>
+              <li><a href="https://www.topuniversities.com/university-rankings/asian-university-rankings/2019" target="_blank">Asia</a></li>
             </ul>
           </div>
         </div>
@@ -316,10 +320,10 @@
           <div class="single-footer-widget tp_widgets">
             <h6 class="footer_title">Resources</h6>
             <ul class="list">
-              <li><a href="#">Guides</a></li>
-              <li><a href="#">Research</a></li>
-              <li><a href="#">Experts</a></li>
-              <li><a href="#">Agencies</a></li>
+              <li><a href="https://www.wes.org/advisor-blog/" target="_blank">Guides</a></li>
+              <li><a href="https://www.lakeheadu.ca/admissions" target="_blank">Research</a></li>
+              <li><a href="#" target="_blank">Experts</a></li>
+              <li><a href="#" target="_blank">Agencies</a></li>
             </ul>
           </div>
         </div>
@@ -347,7 +351,7 @@
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             Copyright &copy;<script>
               document.write(new Date().getFullYear());
-            </script> All rights reserved | This Website is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">SparkTeam</a>
+            </script> All rights reserved | This Website is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="" target="_blank">SparkTeam</a>
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
           </p>
           <div class="col-lg-4 col-md-4 footer-social">

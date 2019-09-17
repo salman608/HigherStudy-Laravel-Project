@@ -8,7 +8,7 @@
         <div class="banner_content text-center">
           <h2>Contact Us</h2>
           <div class="page_link">
-            <a href="index.html">Home</a>
+            <a href="{{ URL::to('/') }}">Home</a>
             <a href="about-us.html">Contact</a>
           </div>
         </div>

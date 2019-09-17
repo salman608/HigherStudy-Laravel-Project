@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Agencypost;
+use App\Subscribe;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('agency.dashboard');
+        $agencypost_count=Agencypost::all();
+        $subscribe_count=Subscribe::all();
+        return view('agency.dashboard',compact('agencypost_count','subscribe_count'));
     }
 }

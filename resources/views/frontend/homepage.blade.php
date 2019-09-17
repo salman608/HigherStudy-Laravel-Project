@@ -21,7 +21,7 @@
         <section class="blog_categorie_area">
             <div class="container">
                   <div class="main_title" style="margin-top:-260px">
-                    <h2 style="font-family: 'Titillium Web', sans-serif;color:black;">Degree Lavel</h2>
+                    <h2 style="font-family: 'Titillium Web', sans-serif;color:black;">Degree Level</h2>
                     <hr class="categoryhr">
                   </div>
                 <div class="row">
@@ -76,7 +76,7 @@
                       <h2 style="color:black;font-family: 'Farro', sans-serif;"> Agencies</h2>
                       <hr class="categoryhr">
                     </div>
-                  <div class="row">
+                  {{-- <div class="row">
 
 
 
@@ -96,27 +96,44 @@
 
                       @endforeach
 
+                  </div> --}}
+
+                  <div class="row courses_inner">
+
+                          <div class="grid_inner">
+
+                              @foreach($agencyoffer as $agencyoffer)
+                           <a href="{{route('categoryByPost',$agencyoffer->user_id)}}">
+                              <div class="grid_item wd55 col-lg-4">
+                                  <div class="courses_item">
+                                      <img src="{{URL::to('uploads/agency/'.$agencyoffer->image)}}" alt="">
+
+                                       <div class="overlay" style="background-color: rgba(0, 0, 0, 0.6);">
+                                      <div class="hover_text" style="background-color: rgba(0, 0, 0, 0.6);" >
 
 
 
 
-                     
-                  </div>
+                                          <a href="{{route('categoryByPost',$agencyoffer->user_id)}}"><h4>{{$agencyoffer->title}}</h4></a>
+                                          <ul class="list">
+                                              {{-- <li><a href="#"><i class="lnr lnr-users"></i> 355</a></li>
+                                              <li><a href="#"><i class="lnr lnr-bubble"></i> 35</a></li>
+                                              <li><a href="#"><i class="lnr lnr-user"></i></a></li> --}}
+                                          </ul>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              </a>
+                               @endforeach
+                          </div>
+                      </div>
+
               </div>
           </section>
           <!--================Blog Agency Area =================-->
 
-          <!--================Impress Area =================-->
-        <!-- <section class="impress_area p_120">
-          <div class="container">
-            <div class="impress_inner text-center">
-              <h2>Become an instructor</h2>
-              <p>There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope. It’s exciting to think about setting up your own viewing station whether that is on the deck</p>
-              <a class="main_btn2" href="#">Apply for Scholarship</a>
-            </div>
-          </div>
-        </section> -->
-  <!--================End Impress Area =================-->
+
 
 
 @endsection

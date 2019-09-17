@@ -10,7 +10,7 @@
         <div class="banner_content text-center">
           <h2>Department</h2>
           <div class="page_link">
-            <a href="index.html">Home</a>
+            <a href="">Home</a>
             <a href="about-us.html">Country</a>
             <a href="about-us.html">University</a>
             <a href="about-us.html">Department</a>
@@ -43,6 +43,8 @@
                 </a>
               </div>
               @endforeach
+
+            
             </div>
           </div>
 

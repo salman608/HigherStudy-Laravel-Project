@@ -205,3 +205,13 @@ padding-bottom: 50px !important;
   margin: auto;
   display: none;
 }
+
+@media (min-width: 992px)
+.col-md-offset-2 {
+    margin-left: -1.333333%;
+}
+
+.courses_item img {
+    height: 200px;
+    width: 401px;
+}

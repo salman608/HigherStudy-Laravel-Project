@@ -24,6 +24,8 @@ Route::get('/', 'Frontend\HomeController@index');
 
 
 
+
+
 Route::get('/categorybycountry/{id}','Frontend\HomeController@categoryByCountry')->name('categorybycountry');
 
 Route::get('/countryByUniversity/{id}','Frontend\HomeController@countryByUniversity')->name('countrybyuniversity');
@@ -31,8 +33,6 @@ Route::get('/countryByUniversity/{id}','Frontend\HomeController@countryByUnivers
 Route::get('/universityByDepartment/{id}','Frontend\HomeController@universityByDepartment')->name('universitybydepartment');
 
 Route::get('/confirmCourse/uni/{uni}/dep/{dep}','Frontend\HomeController@confirmCourse')->name('confirmCourse');
-
-
 
 
 
@@ -69,6 +69,7 @@ Route::prefix('student')->group(function(){
   Route::put('profile_update','Student\SettingController@updateprofile')->name('student.profile.update');
   Route::put('password-update','Student\SettingController@updatepassword')->name('student.password.update');
 
+
 });
 
 
@@ -98,7 +99,7 @@ Route::get('/agencycategory','Admin\AgencyController@index')->name('agencycatego
 
 Auth::routes();
 
-Route::get('/user', 'HomeController@index')->name('home');
+Route::get('/user', 'HomeController@index')->name('agency.home');
 Route::get('/student', 'StudentController@index');
 
 Route::group(['prefix'=>'admin'],function(){
@@ -154,6 +155,7 @@ Route::group(['prefix'=>'user'],function(){
   Route::resource('/agencyprofile','Agency\AgencyprofileContriller');
   Route::resource('/agencypost','Agency\AgencypostController');
   Route::resource('/studentapply','Agency\Studentapply');
+  //Route::post('/apply','Agency\ApplyController@store')->name('apply');
   Route::get('/setting','Agency\SettingController@index')->name('setting');
   Route::put('profile-update','Agency\SettingController@updateprofile')->name('profile.update');
   Route::put('password-update','Agency\SettingController@updatepassword')->name('password.update');
@@ -173,3 +175,7 @@ Route::post('add/customer/data','ContactController@add');
 
 // Subscribe route is strat Here
 Route::post('Subscriber','SubscribeController@store')->name('subscriber.store');
+
+// Frontend offer post
+Route::get('/offerview','Frontend\OfferviewController@categoryByPost')->name('offerview');
+Route::get('/offerdetails','Frontend\OfferviewController@offerdetails')->name('offerdetails');

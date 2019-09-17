@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Studentapplication;
+use App\Agencyprofile;
+use Auth;
 
 class StudentController extends Controller
 {
@@ -25,6 +28,7 @@ class StudentController extends Controller
 
     public function student()
     {
-      return view('frontend.student');
+      $hi=Studentapplication::where('user_id',Auth::user()->id)->get();
+      return view('frontend.student',compact('hi'));
     }
 }

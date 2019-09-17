@@ -40,7 +40,7 @@
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
 
                 <div class="navbar-header">
-                    <a class="navbar-brand text-white" href="index.html">Agency Admin Panel</a>
+                    <a class="navbar-brand text-white" href="{{ URL::to('/user') }}">Agency Admin Panel</a>
                         <!-- Logo icon --><b>
 
                         </b>
@@ -58,9 +58,9 @@
                         <li class="nav-item m-l-10"> <a class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-message"></i>
+                            {{-- <a class="nav-link dropdown-toggle text-muted text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-message"></i>
                                 <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
-                            </a>
+                            </a> --}}
                             <div class="dropdown-menu mailbox animated slideInUp">
                                 <ul>
                                     <li>
@@ -107,9 +107,9 @@
                         <!-- Messages -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-email"></i>
+                            {{-- <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-email"></i>
                                 <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
-                            </a>
+                            </a> --}}
                             <div class="dropdown-menu mailbox animated slideInUp" aria-labelledby="2">
                                 <ul>
                                     <li>
@@ -171,7 +171,7 @@
                                 <ul class="dropdown-user">
                                     <li>
                                         <div class="dw-user-box">
-                                            <div class="u-img"><img src="" alt="user"></div>
+                                            <div class="u-img"><img src="{{URL::asset('uploads/profile/'.Auth::user()->image)}}" alt="user"></div>
                                             <div class="u-text">
                                                 <h4>{{Auth::user()->name}} </h4>
                                                 <p class="text-muted"> </p>
@@ -179,7 +179,7 @@
                                         </div>
                                     </li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
+                                    <li><a href="{{ route('setting') }}"><i class="ti-user"></i> My Profile</a></li>
 
 
                                     <li role="separator" class="divider"></li>
@@ -222,7 +222,7 @@
 
 
                         <!-- this is blinking heartbit-->
-                        <div class="notify setpos"> <span class="heartbit"></span> <span class="point"></span> </div>
+                        {{-- <div class="notify setpos"> <span class="heartbit"></span> <span class="point"></span> </div> --}}
                     </div>
                     <!-- User profile text-->
                     <div class="profile-text">
@@ -240,7 +240,7 @@
                               @csrf
                           </form>
                           <hr>
-                          <h4><a href="#" style="color:black;font-weight:bold;">Dashboard</a></h4>
+                          <h4><a href="{{ URL::to('/user') }}" style="color:black;font-weight:bold;">Dashboard</a></h4>
 
 
 
@@ -300,7 +300,7 @@
 
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class=" mdi mdi-message"></i><span class="hide-menu">Apply student</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{route('studentapply.index')}}">All Apply</a></li>
+                                <li><a href="{{route('studentapply.show',Auth::user()->id)}}">All Apply</a></li>
 
                             </ul>
                         </li>
@@ -315,19 +315,19 @@
 
 
 
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class=" mdi mdi-message"></i><span class="hide-menu">Contact</span></a>
+                        {{-- <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class=" mdi mdi-message"></i><span class="hide-menu">Contact</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="">All Contact</a></li>
 
                             </ul>
-                        </li>
+                        </li> --}}
 
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Maps</span></a>
+                        {{-- <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Maps</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="map-google.html">Google Maps</a></li>
                                 <li><a href="map-vector.html">Vector Maps</a></li>
                             </ul>
-                        </li>
+                        </li> --}}
 
                     </ul>
                 </nav>

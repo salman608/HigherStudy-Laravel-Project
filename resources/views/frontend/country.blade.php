@@ -10,8 +10,8 @@
         <div class="banner_content text-center">
           <h2>Country</h2>
           <div class="page_link">
-            <a href="index.html">Home</a>
-            <a href="about-us.html">Country</a>
+            <a href="{{ URL::to('/') }}">Home</a>
+
           </div>
         </div>
       </div>
@@ -35,11 +35,14 @@
                         <div class="dash-widget-info">
 
                             <h3>{{ $country->name }}</h3>
+
                         </div>
                     </div>
                     </a>
                 </div>
                @endforeach
+
+
 
                 <!-- <div class="col-md-6 col-sm-6 col-lg-4">
                     <div class="dash-widget2">

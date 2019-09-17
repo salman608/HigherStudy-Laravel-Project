@@ -15,8 +15,7 @@ class Studentapply extends Controller
      */
     public function index()
     {
-      $studentapplays=Studentapplication::all();
-          return view('agency.studentapply.index',compact('studentapplays'));
+
     }
 
     /**
@@ -37,7 +36,7 @@ class Studentapply extends Controller
      */
     public function store(Request $request)
     {
-
+        
         $this->validate($request,[
           'name'=>'required',
           'email'=>'required',
@@ -56,6 +55,7 @@ class Studentapply extends Controller
         ]);
 
         $studentapplay= new Studentapplication;
+        $studentapplay->agency_id=$request->agency_id;
         $studentapplay->name=$request->name;
         $studentapplay->email=$request->email;
         $studentapplay->mobile=$request->mobile;
@@ -80,7 +80,7 @@ class Studentapply extends Controller
         $studentapplay->preferdegree=$request->preferdegree;
         $studentapplay->save();
 
-        return redirect(route('agencypost'));
+        // return redirect(route('agencypost'));
     }
 
     /**
@@ -91,7 +91,8 @@ class Studentapply extends Controller
      */
     public function show($id)
     {
-        //
+         $studentapplays=Studentapplication::where('agency_id',$id)->get();
+         return view('agency.studentapply.index',compact('studentapplays'));
     }
 
     /**
