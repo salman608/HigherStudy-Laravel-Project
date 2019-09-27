@@ -51,7 +51,7 @@
 
         <div class="float-right">
           <a class="dn_btn" href="tel:+4400123654896">+8801725496104</a>
-          <a class="dn_btn" href="mailto:support@colorlib.com">salman@gmail.com</a>
+          <a class="dn_btn" href="">salman@gmail.com</a>
 
            {{-- @guest
           <a href="{{route('student.login')}}" style="color:white;font-size:11px;"><i class="fa fa-user"></i>  STUDENT</a>
@@ -125,8 +125,8 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                                     document.getElementById('logout-form').submit();"><i class="fa fa-sign-out">  {{ __('Logout') }}</i>
+
                                     </a>
                                     <a class="dropdown-item" href="{{ route('student') }}">
                                         {{ __('Profile') }}

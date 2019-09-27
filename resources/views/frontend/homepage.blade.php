@@ -27,8 +27,9 @@
                 <div class="row">
 
                  @foreach($categories as $category)
-
+                  <a href="{{ route('categorybycountry', $category->id) }}">
                     <div class="col-lg-3">
+
                         <div class="categories_post">
                             <img src="{{('uploads/item/'.$category->image)}}" alt="post">
                             <div class="categories_details">
@@ -39,7 +40,9 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
+                    </a>
                     @endforeach
 
                 </div>

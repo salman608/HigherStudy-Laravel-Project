@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Agency;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Studentapplication;
+use Brian2694\Toastr\Facades\Toastr;
 
 class Studentapply extends Controller
 {
@@ -36,22 +37,20 @@ class Studentapply extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $this->validate($request,[
-          'name'=>'required',
-          'email'=>'required',
-          'address'=>'required',
-          'mobile'=>'required',
-          's_degree'=>'required',
-          's_year'=>'required',
-          'h_degree'=>'required',
-          'h_year'=>'required',
-          'g_degree'=>'required',
-          'g_year'=>'required',
-          'm_degree'=>'required',
-          'm_year'=>'required',
-          'i_score'=>'required',
-          'i_year'=>'required'
+          // 'name'=>'required',
+          // 'email'=>'required',
+          // 'address'=>'required',
+          // 'mobile'=>'required',
+          // 's_degree'=>'required',
+          // 's_year'=>'required',
+          // 'h_degree'=>'required',
+          // 'h_year'=>'required',
+          // 'g_degree'=>'required',
+          // 'g_year'=>'required',
+          // 'i_score'=>'required',
+          // 'i_year'=>'required'
         ]);
 
         $studentapplay= new Studentapplication;
@@ -79,7 +78,8 @@ class Studentapply extends Controller
         $studentapplay->country=$request->country;
         $studentapplay->preferdegree=$request->preferdegree;
         $studentapplay->save();
-
+        Toastr::success("You Successfully Apply", 'success');
+          return redirect()->back();
         // return redirect(route('agencypost'));
     }
 

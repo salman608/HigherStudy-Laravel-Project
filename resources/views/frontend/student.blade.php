@@ -237,7 +237,7 @@
         <th scope="col">Country Name</th>
         <th scope="col">preferdegree</th>
         <th scope="col">Apply Date</th>
-        <th scope="col">View Full History</th>
+
       </tr>
     </thead>
 
@@ -257,7 +257,7 @@
         <td>{{ $history->country }}</td>
         <td>{{$history->preferdegree}}</td>
         <td>{{ $history->created_at }}</td>
-      <td><a class="btn btn-warning" href="#"><i class="fa fa-eye"></i></a></td>
+      
       </tr>
 
         @endforeach

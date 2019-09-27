@@ -62,11 +62,11 @@
                              <a  class="btn btn-info text-white" href="{{ route('student.register') }}">{{ __('Register') }}</a>
                                 @endif
 
-                                @if (Route::has('password.request'))
+                                {{-- @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
-                                @endif
+                                @endif --}}
                             </div>
                         </div>
                     </form>
